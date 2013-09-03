@@ -1,0 +1,35 @@
+<div class="row">
+
+ <div class="span10">
+  <h3>Note Academy is a learning reference. We organize and gather learning resources via user-generated Notes.</h3>
+ </div>
+
+ <div class="span2" style="padding-top:10px;">
+  <p><%= link_to "Sign up", new_user_path, class: "btn btn-large btn-primary" %></p>
+ </div>
+</div>  
+
+<div class="row">
+ <div class="span12">
+
+<h4>Main Index</h4>
+
+  <hr>
+  <% if current_user.present? %>
+    <div class="btn-group">
+      <%= link_to "Add Page", new_page_path, :class => "btn btn-small btn-default" %>
+    </div><br>
+  <% end %>
+
+  <table>
+  <tr>
+  <% @pages.each do |page| %>
+    <tr>
+      <td><span class="glyphicon icon-chevron-right"></span> <%= link_to page.name, page %> </td>
+    </tr>
+  <% end %>
+  </table>
+
+<br />
+ </div>
+</div>  

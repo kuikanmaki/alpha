@@ -1,0 +1,37 @@
+<% provide(:title, 'About Us') %>
+
+<div class="row">
+
+ <div class="span8">
+
+<h3>About Us</h3>
+<hr>
+
+<h4>1. What is Note Academy?</h4>
+
+<p>Note Academy is a collaborative, web-based learning reference that anyone can edit and use.</p>
+<hr>
+<h4>2. What is the mission of Note Academy?</h4>
+
+<p>We aim to be a quick and useful guide when you need to learn a new topic. We are gathering and organizing all information related to learning, making it easier for you to navigate to the most useful information.</p>
+<hr>
+<h4>3. What are Notes?</h4>
+
+<p>A Note is is a brief instruction on learning some topic.&#160;Note Academy members are encouraged to publish Notes on the topics they have domain expertise - thus we are collecting and organizing the dispersed, specialized information from each user into a useful and diverse database.</p>
+<hr>
+<h4>4. How are all the Notes organized?</h4>
+
+<p>Every Note in Note Academy belongs to a Page - each Page representing a single topic.&#160;All of the Pages form an interconnected graph, or a network, like this:</p>
+
+<%= image_tag("acyclic_digraph.svg") %>
+<hr>
+<h4>6. What is the criteria for a Page?</h4>
+
+<p>A Page is anything that reasonably could be a topic for a university course or a lecture. It can be an undergraduate course, Business school, Law School, Medical School, Arts and Design graduate program, Phd seminar - the main thing is that it should be something that could be taught at a university level.</p>
+<hr>
+<h4>7. All of this sounds very cool. Where can I sign up?</h4>
+
+<span class="glyphicon icon-user"></span> <%= link_to "Here", new_user_path %>
+
+ </div>
+</div>

@@ -1,0 +1,118 @@
+<div class="row">
+  <div class="span2">
+   <%= image_tag @page.image.url(:thumb) %> 
+   <% if @page.image.path.nil? && current_user.present? %>
+     <%= link_to "Add Image", edit_page_path(:id => @page.id, :type => "image"), :class => "btn btn-mini btn-link" %>
+   <% end %>
+ </div>
+
+ <div class="span10">
+
+<h5>
+ <% if @parentpages.any? %>  
+  <% @parentpages.each do |parentpage| %>
+  <%= link_to parentpage.name, parentpage %>
+  <% end %>
+ <% else %> 
+  <%= link_to 'Main Index', root_path %>
+ <% end %>
+</h5>
+
+<h3><%= @page.name %></h3>
+
+  <div style="margin-top:10px;margin-bottom:10px;padding-right:100px;">
+
+  </div>
+
+  <% if current_user.present? %>    
+
+    <div class="btn-group">
+      <%= link_to "Add Subpage", new_page_path(:id => @page.id, :status => "subpage"), :class => "btn btn-small btn-default" %>
+      <%= link_to 'Add Related Page', new_page_path(:id => @page.id, :status => "relatedpage"), :class => "btn btn-small btn-default" %>
+    </div>
+
+     <% if current_user.admin %> 
+       <br><%= link_to 'Delete Page', page_path, :confirm => 'Are you sure you want to delete this page?', :method => :delete %>
+     <% end %>
+  <% end %>
+
+      <% if @subpages.any? %> 
+        <table style="margin-top:20px;">
+          <tr>
+            <% @subpages.each do |subpage| %>
+              <tr>
+                <td> <span class="glyphicon icon-chevron-right"></span> <%= link_to subpage.name, subpage %> </td>
+              </tr>
+            <% end %>
+         </table>
+      <% else %>        
+        <br>
+      <% end %>
+
+    <hr>
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="span8 offset2">
+      <h4>Introduction Notes</h4>
+      <% if current_user.present? %>
+        <%= link_to image_tag("plussign.gif", width: "18"), new_note_path(:id => @page.id, :notetype => "introduction") %>
+      <% end %>
+      <% if @intronotes.any? %>
+        <ol class="notes">
+          <%= render @intronotes %>
+        </ol>
+          <%= will_paginate @intronotes %>
+      <br><br>
+      <% elsif current_user.present? %>
+        <p><br>Be the first one to <%= link_to 'Write an Introduction Note', new_note_path(:id => @page.id, :notetype => "introduction") %>.</p>      
+      <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span8 offset2">
+      <h4>Study Notes</h4>
+      <% if current_user.present? %>
+        <%= link_to image_tag("plussign.gif", width: "18"), new_note_path(:id => @page.id, :notetype => "study") %>
+      <% end %>      
+      <% if @studynotes.any? %>
+        <ol class="notes">
+          <%= render @studynotes %>
+        </ol>
+        <%= will_paginate @studynotes %>
+      <br><br>     
+      <% elsif current_user.present? %>
+        <p><br>Be the first one to <%= link_to 'Write a Study Note', new_note_path(:id => @page.id, :notetype => "study") %>.</p>        
+      <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span8 offset2">
+      <h4>Related Pages</h4>
+      <% if @relatedpages.any? %> 
+        <table>
+          <tr>
+            <% @relatedpages.each do |relatedpage| %>
+              <tr>
+                <td width="20" style="padding-top:1px;padding-right:10px;"><%= link_to (image_tag relatedpage.image.url(:thumb)), relatedpage %></td>
+                <td><%= link_to relatedpage.name, page_path(:id => relatedpage.id, :backlink => @page.name) %> </td>
+              </tr>
+            <% end %>
+         </table>
+      <% elsif current_user.present? %>
+         <p>Be the first one to <%= link_to 'Add a Related Page', new_page_path(:id => @page.id, :status => "relatedpage") %>.</p>      
+      <% end %>
+  </div>
+</div>
+
+<% if current_user.nil? %>
+  <div class="row">
+    <div class="span8 offset2" style="margin-top:50px;border-style:solid;border-width:1px;padding:10px;">
+      To edit Pages or Add Notes you have to be <%= link_to "Signed in", signin_path %>.
+    </div>
+  </div>
+<% end %>      

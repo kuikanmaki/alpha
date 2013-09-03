@@ -1,0 +1,23 @@
+<div class="row">
+
+<div class="span9 note">
+  <p>
+
+    <%= link_to (image_tag @note.user.avatar.url(:thumb), :class => "user_small"), @note.user %>
+    <b><%= @note.user.name %></b><br><br>
+
+    <% if @note.page %>
+      <span style="color:gray;font-size:1.0em;">Subject: <%= link_to (@note.page.name), @note.page %> | Published <%= time_ago_in_words(@note.created_at) %> ago</span>
+    <% end %>
+
+    <% if current_user?(@note.user) %>
+      <br><br> <%= link_to 'Edit', edit_note_path(@note) %>
+    <% end %>
+
+    <hr><br> <%= raw(@note.content) %> <br><br>
+
+  </p>
+  
+ </div>
+</div>
+
