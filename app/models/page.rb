@@ -10,7 +10,7 @@ class Page  < ActiveRecord::Base
                                            :default_url => "default/noisygrid.png",
                                            :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
                                            :url => "/system/:attachment/:id/:style/:filename"
-  validates_attachment_presence :image
+  #validates_attachment_presence :image
   default_scope :order => 'name ASC'
   has_and_belongs_to_many :parentpages, 
                                            :class_name => "Page",
