@@ -13,7 +13,9 @@ gem 'thin'
 gem "paperclip", "~> 3.0"
 gem "nokogiri"
 gem "sanitize"
-gem 'sass-rails','3.1.4'
+gem 'sass-rails','3.2.5'
+#gem 'sass-rails','3.1.4'
+
 
 gem 'bootstrap-wysihtml5-rails'
 gem "friendly_id", "~> 4.0.10"
@@ -31,7 +33,6 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  #gem 'sass-rails',   '3.2.5'
   gem 'coffee-rails', '3.2.2'
   gem 'uglifier', '1.2.3'
 end
