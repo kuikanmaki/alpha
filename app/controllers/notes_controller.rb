@@ -1,6 +1,6 @@
 class NotesController < ApplicationController
   
-before_filter :authorize, :except => [:show, :new]
+before_filter :authorize, :except => [:show, :new, :create]
 
   # GET /notes
   # GET /notes.json

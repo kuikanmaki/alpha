@@ -14,6 +14,7 @@ gem "paperclip", "~> 3.0"
 gem "nokogiri"
 gem "sanitize"
 gem 'sass-rails','3.2.5'
+gem 'rmagick', '2.13.2', :require => 'RMagick'
 #gem 'sass-rails','3.1.4'
 
 

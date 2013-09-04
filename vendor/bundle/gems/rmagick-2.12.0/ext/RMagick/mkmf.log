@@ -1,0 +1,198 @@
+checking for Ruby version >= 1.8.5... -------------------- yes
+
+--------------------
+
+find_executable: checking for gcc-4.2... -------------------- yes
+
+--------------------
+
+find_executable: checking for Magick-config... -------------------- yes
+
+--------------------
+
+checking for ImageMagick version >= 6.3.5... -------------------- yes
+
+--------------------
+
+checking for HDRI disabled version of ImageMagick... -------------------- yes
+
+--------------------
+
+have_header: checking for stdint.h... -------------------- yes
+
+"gcc-4.2 -o conftest -I/usr/local/rvm/rubies/ruby-1.9.3-p448/include/ruby-1.9.1/x86_64-darwin10.8.0 -I/usr/local/rvm/rubies/ruby-1.9.3-p448/include/ruby-1.9.1/ruby/backward -I/usr/local/rvm/rubies/ruby-1.9.3-p448/include/ruby-1.9.1 -I.  -DMAGICKCORE_HDRI_ENABLE=0 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/Cellar/imagemagick/6.8.6-3/include/ImageMagick-6   -DMAGICKCORE_HDRI_ENABLE=0 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/Cellar/imagemagick/6.8.6-3/include/ImageMagick-6  conftest.c  -L. -L/usr/local/rvm/rubies/ruby-1.9.3-p448/lib  -L/usr/local/Cellar/imagemagick/6.8.6-3/lib -lMagickCore-6.Q16     -L/usr/local/Cellar/imagemagick/6.8.6-3/lib -lMagickCore-6.Q16   -lruby.1.9.1  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return 0;
+6: }
+/* end */
+
+"gcc-4.2 -E -I/usr/local/rvm/rubies/ruby-1.9.3-p448/include/ruby-1.9.1/x86_64-darwin10.8.0 -I/usr/local/rvm/rubies/ruby-1.9.3-p448/include/ruby-1.9.1/ruby/backward -I/usr/local/rvm/rubies/ruby-1.9.3-p448/include/ruby-1.9.1 -I.  -DMAGICKCORE_HDRI_ENABLE=0 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/Cellar/imagemagick/6.8.6-3/include/ImageMagick-6   -DMAGICKCORE_HDRI_ENABLE=0 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/Cellar/imagemagick/6.8.6-3/include/ImageMagick-6   conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <stdint.h>
+/* end */
+
+--------------------
+
+have_header: checking for sys/types.h... -------------------- yes
+
+"gcc-4.2 -E -I/usr/local/rvm/rubies/ruby-1.9.3-p448/include/ruby-1.9.1/x86_64-darwin10.8.0 -I/usr/local/rvm/rubies/ruby-1.9.3-p448/include/ruby-1.9.1/ruby/backward -I/usr/local/rvm/rubies/ruby-1.9.3-p448/include/ruby-1.9.1 -I.  -DMAGICKCORE_HDRI_ENABLE=0 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/Cellar/imagemagick/6.8.6-3/include/ImageMagick-6   -DMAGICKCORE_HDRI_ENABLE=0 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/Cellar/imagemagick/6.8.6-3/include/ImageMagick-6   conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <sys/types.h>
+/* end */
+
+--------------------
+
+have_header: checking for wand/MagickWand.h... -------------------- yes
+
+"gcc-4.2 -E -I/usr/local/rvm/rubies/ruby-1.9.3-p448/include/ruby-1.9.1/x86_64-darwin10.8.0 -I/usr/local/rvm/rubies/ruby-1.9.3-p448/include/ruby-1.9.1/ruby/backward -I/usr/local/rvm/rubies/ruby-1.9.3-p448/include/ruby-1.9.1 -I.  -DMAGICKCORE_HDRI_ENABLE=0 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/Cellar/imagemagick/6.8.6-3/include/ImageMagick-6   -DMAGICKCORE_HDRI_ENABLE=0 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/Cellar/imagemagick/6.8.6-3/include/ImageMagick-6   conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <wand/MagickWand.h>
+/* end */
+
+--------------------
+
+have_library: checking for InitializeMagick() in -lMagickCore... -------------------- no
+
+"gcc-4.2 -o conftest -I/usr/local/rvm/rubies/ruby-1.9.3-p448/include/ruby-1.9.1/x86_64-darwin10.8.0 -I/usr/local/rvm/rubies/ruby-1.9.3-p448/include/ruby-1.9.1/ruby/backward -I/usr/local/rvm/rubies/ruby-1.9.3-p448/include/ruby-1.9.1 -I.  -DMAGICKCORE_HDRI_ENABLE=0 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/Cellar/imagemagick/6.8.6-3/include/ImageMagick-6   -DMAGICKCORE_HDRI_ENABLE=0 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/Cellar/imagemagick/6.8.6-3/include/ImageMagick-6  conftest.c  -L. -L/usr/local/rvm/rubies/ruby-1.9.3-p448/lib  -L/usr/local/Cellar/imagemagick/6.8.6-3/lib -lMagickCore-6.Q16     -L/usr/local/Cellar/imagemagick/6.8.6-3/lib -lMagickCore-6.Q16   -lruby.1.9.1 -lMagickCore  -lpthread -ldl -lobjc "
+conftest.c: In function ‘t’:
+conftest.c:14: warning: ‘InitializeMagick’ is deprecated (declared at /usr/local/Cellar/imagemagick/6.8.6-3/include/ImageMagick-6/magick/deprecate.h:336)
+ld: library not found for -lMagickCore
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <assert.h>
+ 4: #include <ctype.h>
+ 5: #include <stdio.h>
+ 6: #include <stdlib.h>
+ 7: #include <math.h>
+ 8: #include <time.h>
+ 9: #include <stdint.h>
+10: #include <sys/types.h>
+11: #include <wand/MagickWand.h>
+12: 
+13: /*top*/
+14: int t() { void ((*volatile p)()); p = (void ((*)()))InitializeMagick; return 0; }
+15: int main(int argc, char **argv)
+16: {
+17:   if (argc > 1000000) {
+18:     printf("%p", &t);
+19:   }
+20: 
+21:   return 0;
+22: }
+/* end */
+
+"gcc-4.2 -o conftest -I/usr/local/rvm/rubies/ruby-1.9.3-p448/include/ruby-1.9.1/x86_64-darwin10.8.0 -I/usr/local/rvm/rubies/ruby-1.9.3-p448/include/ruby-1.9.1/ruby/backward -I/usr/local/rvm/rubies/ruby-1.9.3-p448/include/ruby-1.9.1 -I.  -DMAGICKCORE_HDRI_ENABLE=0 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/Cellar/imagemagick/6.8.6-3/include/ImageMagick-6   -DMAGICKCORE_HDRI_ENABLE=0 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/Cellar/imagemagick/6.8.6-3/include/ImageMagick-6  conftest.c  -L. -L/usr/local/rvm/rubies/ruby-1.9.3-p448/lib  -L/usr/local/Cellar/imagemagick/6.8.6-3/lib -lMagickCore-6.Q16     -L/usr/local/Cellar/imagemagick/6.8.6-3/lib -lMagickCore-6.Q16   -lruby.1.9.1 -lMagickCore  -lpthread -ldl -lobjc "
+conftest.c: In function ‘t’:
+conftest.c:14: warning: ‘InitializeMagick’ is deprecated (declared at /usr/local/Cellar/imagemagick/6.8.6-3/include/ImageMagick-6/magick/deprecate.h:336)
+conftest.c:14: error: too few arguments to function ‘InitializeMagick’
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <assert.h>
+ 4: #include <ctype.h>
+ 5: #include <stdio.h>
+ 6: #include <stdlib.h>
+ 7: #include <math.h>
+ 8: #include <time.h>
+ 9: #include <stdint.h>
+10: #include <sys/types.h>
+11: #include <wand/MagickWand.h>
+12: 
+13: /*top*/
+14: int t() { InitializeMagick(); return 0; }
+15: int main(int argc, char **argv)
+16: {
+17:   if (argc > 1000000) {
+18:     printf("%p", &t);
+19:   }
+20: 
+21:   return 0;
+22: }
+/* end */
+
+--------------------
+
+have_library: checking for InitializeMagick() in -lMagick... -------------------- no
+
+"gcc-4.2 -o conftest -I/usr/local/rvm/rubies/ruby-1.9.3-p448/include/ruby-1.9.1/x86_64-darwin10.8.0 -I/usr/local/rvm/rubies/ruby-1.9.3-p448/include/ruby-1.9.1/ruby/backward -I/usr/local/rvm/rubies/ruby-1.9.3-p448/include/ruby-1.9.1 -I.  -DMAGICKCORE_HDRI_ENABLE=0 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/Cellar/imagemagick/6.8.6-3/include/ImageMagick-6   -DMAGICKCORE_HDRI_ENABLE=0 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/Cellar/imagemagick/6.8.6-3/include/ImageMagick-6  conftest.c  -L. -L/usr/local/rvm/rubies/ruby-1.9.3-p448/lib  -L/usr/local/Cellar/imagemagick/6.8.6-3/lib -lMagickCore-6.Q16     -L/usr/local/Cellar/imagemagick/6.8.6-3/lib -lMagickCore-6.Q16   -lruby.1.9.1 -lMagick  -lpthread -ldl -lobjc "
+conftest.c: In function ‘t’:
+conftest.c:14: warning: ‘InitializeMagick’ is deprecated (declared at /usr/local/Cellar/imagemagick/6.8.6-3/include/ImageMagick-6/magick/deprecate.h:336)
+ld: library not found for -lMagick
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <assert.h>
+ 4: #include <ctype.h>
+ 5: #include <stdio.h>
+ 6: #include <stdlib.h>
+ 7: #include <math.h>
+ 8: #include <time.h>
+ 9: #include <stdint.h>
+10: #include <sys/types.h>
+11: #include <wand/MagickWand.h>
+12: 
+13: /*top*/
+14: int t() { void ((*volatile p)()); p = (void ((*)()))InitializeMagick; return 0; }
+15: int main(int argc, char **argv)
+16: {
+17:   if (argc > 1000000) {
+18:     printf("%p", &t);
+19:   }
+20: 
+21:   return 0;
+22: }
+/* end */
+
+"gcc-4.2 -o conftest -I/usr/local/rvm/rubies/ruby-1.9.3-p448/include/ruby-1.9.1/x86_64-darwin10.8.0 -I/usr/local/rvm/rubies/ruby-1.9.3-p448/include/ruby-1.9.1/ruby/backward -I/usr/local/rvm/rubies/ruby-1.9.3-p448/include/ruby-1.9.1 -I.  -DMAGICKCORE_HDRI_ENABLE=0 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/Cellar/imagemagick/6.8.6-3/include/ImageMagick-6   -DMAGICKCORE_HDRI_ENABLE=0 -DMAGICKCORE_QUANTUM_DEPTH=16 -I/usr/local/Cellar/imagemagick/6.8.6-3/include/ImageMagick-6  conftest.c  -L. -L/usr/local/rvm/rubies/ruby-1.9.3-p448/lib  -L/usr/local/Cellar/imagemagick/6.8.6-3/lib -lMagickCore-6.Q16     -L/usr/local/Cellar/imagemagick/6.8.6-3/lib -lMagickCore-6.Q16   -lruby.1.9.1 -lMagick  -lpthread -ldl -lobjc "
+conftest.c: In function ‘t’:
+conftest.c:14: warning: ‘InitializeMagick’ is deprecated (declared at /usr/local/Cellar/imagemagick/6.8.6-3/include/ImageMagick-6/magick/deprecate.h:336)
+conftest.c:14: error: too few arguments to function ‘InitializeMagick’
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <assert.h>
+ 4: #include <ctype.h>
+ 5: #include <stdio.h>
+ 6: #include <stdlib.h>
+ 7: #include <math.h>
+ 8: #include <time.h>
+ 9: #include <stdint.h>
+10: #include <sys/types.h>
+11: #include <wand/MagickWand.h>
+12: 
+13: /*top*/
+14: int t() { InitializeMagick(); return 0; }
+15: int main(int argc, char **argv)
+16: {
+17:   if (argc > 1000000) {
+18:     printf("%p", &t);
+19:   }
+20: 
+21:   return 0;
+22: }
+/* end */
+
+--------------------
+
+Can't install RMagick 2.12.0. Can't find the ImageMagick library or one of the dependent libraries. Check the mkmf.log file for more detailed information.
