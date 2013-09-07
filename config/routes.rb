@@ -15,7 +15,7 @@ SampleApp::Application.routes.draw do
   resources :notes, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
       
-  root to: 'pages#index'
+  root to: 'static_pages#welcome'
 
   match '/signup',  to: 'users#new'
   match '/signin',  to: 'sessions#new'
