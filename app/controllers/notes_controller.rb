@@ -1,5 +1,6 @@
 class NotesController < ApplicationController
-  
+   include ActionView::Helpers::TextHelper
+
 before_filter :authorize, :except => [:show, :new, :create]
 
   # GET /notes

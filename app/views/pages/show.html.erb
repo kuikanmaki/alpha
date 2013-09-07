@@ -61,11 +61,12 @@
         <%= link_to image_tag("plussign.gif", width: "18"), new_note_path(:id => @page.id, :notetype => "introduction") %>
       <% end %>
       <% if @intronotes.any? %>
+        <br><br>
         <ol class="notes">
           <%= render @intronotes %>
         </ol>
           <%= will_paginate @intronotes %>
-      <br><br>
+      <br>
       <% elsif current_user.present? %>
         <p><br>Be the first one to <%= link_to 'Write an Introduction Note', new_note_path(:id => @page.id, :notetype => "introduction") %>.</p>      
       <% end %>
@@ -79,11 +80,11 @@
         <%= link_to image_tag("plussign.gif", width: "18"), new_note_path(:id => @page.id, :notetype => "study") %>
       <% end %>      
       <% if @studynotes.any? %>
+        <br><br> 
         <ol class="notes">
           <%= render @studynotes %>
         </ol>
         <%= will_paginate @studynotes %>
-      <br><br>     
       <% elsif current_user.present? %>
         <p><br>Be the first one to <%= link_to 'Write a Study Note', new_note_path(:id => @page.id, :notetype => "study") %>.</p>        
       <% end %>
