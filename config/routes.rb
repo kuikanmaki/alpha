@@ -4,10 +4,17 @@ SampleApp::Application.routes.draw do
   resources :parentpages
   resources :subpages
   resources :relatedpages
+  resources :interests
 
   resources :users do
     member do
       get :following, :followers
+    end
+  end
+
+  resources :pages do
+    member do
+      post :follow
     end
   end
 

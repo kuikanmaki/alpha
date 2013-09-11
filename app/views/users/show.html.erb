@@ -16,6 +16,10 @@
   </aside>
   <div class="span8">
     <%= render 'follow_form' if signed_in? %>
+  <% if @interests.any? %>
+    <h3>Interests (<%= @interests.count %>)</h3>
+
+          <% end %>
     <% if @user.notes.any? %>
       <h3>Notes (<%= @user.notes.count %>)</h3>
       <ol class="notes">

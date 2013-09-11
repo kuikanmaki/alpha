@@ -2,6 +2,9 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation, :avatar
   has_secure_password
   has_many :notes
+  has_many :interests
+  has_many :pages, through: :interests, :uniq => true
+  accepts_nested_attributes_for :interests
   has_many :microposts, dependent: :destroy
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed
@@ -13,7 +16,7 @@ class User < ActiveRecord::Base
   has_attached_file :avatar, 
                                            :styles => { :medium => "300x300>", 
                                            :thumb => "100x100>" }, 
-                                           :default_url => "default/noisygrid.png",
+                                           :default_url => "default/userprofile.png",
                                            :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
                                            :url => "/system/:attachment/:id/:style/:filename"
 

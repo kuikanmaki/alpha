@@ -128,6 +128,15 @@ before_filter :require_login, :except => [:show, :index]
     end
   end
 
+  def follow
+    
+      @user = current_user
+      @page = Page.find(params[:id])
+      @user.interests.create( :page_id => @page.id, :user_id => @user.id )
+      #@user.interests << @page
+      redirect_to @page
+  end
+
   # DELETE /pages/1
   # DELETE /pages/1.json
   def destroy
