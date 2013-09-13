@@ -11,7 +11,9 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @notes = @user.notes.paginate(page: params[:page])
-    @interests = @user.interests
+    #@interests = @user.interests
+    #@interests = @user.interests.find_by_sql("select * from interests where (user_id = 2)")
+    @interests = @user.interests.find_by_sql("select * from pages where id in (select page_id from interests where (user_id = 1))") 
   end
 
   def new

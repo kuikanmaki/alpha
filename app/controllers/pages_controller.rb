@@ -36,6 +36,13 @@ before_filter :require_login, :except => [:show, :index]
       @studynotes = @notes.where(:notetype => "study")
       @backlink = params[:backlink]
       @previouspage  = Page.find_by_name(@backlink)
+      if current_user.present?
+        if @page.users.where(:id => current_user.id).present?
+        @follower = true
+        else
+        @follower = false
+        end
+      end
     end
 
     respond_to do |format|
@@ -128,13 +135,20 @@ before_filter :require_login, :except => [:show, :index]
     end
   end
 
-  def follow
-    
+  def follow #adds user as a follower to a page/topic
       @user = current_user
       @page = Page.find(params[:id])
       @user.interests.create( :page_id => @page.id, :user_id => @user.id )
-      #@user.interests << @page
-      redirect_to @page
+      
+      respond_to do |format|
+      if @user.interests.create
+        format.html { redirect_to @page, notice: 'This page has been added to your interests.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to @page, notice: 'Something went wrong.' }
+        format.json { head :no_content }
+      end  
+    end       
   end
 
   # DELETE /pages/1

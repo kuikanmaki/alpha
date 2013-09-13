@@ -16,12 +16,21 @@
   </aside>
   <div class="span8">
     <%= render 'follow_form' if signed_in? %>
-  <% if @interests.any? %>
-    <h3>Interests (<%= @interests.count %>)</h3>
+  <% if @user.interests.any? %>
+    <h4>Interests</h4>
 
-          <% end %>
+    <table style="margin-top:20px;margin-bottom:40px;">
+      <tr>
+      <% @interests.each do |interest| %> 
+        <td><span class="glyphicon icon-ok"></span> <%= link_to interest.name, "../pages/#{interest.id}" %> </td>
+      </tr>
+      <% end %>
+    </table>
+
+  <% end %>
+    
     <% if @user.notes.any? %>
-      <h3>Notes (<%= @user.notes.count %>)</h3>
+      <h4>Notes</h4>
       <ol class="notes">
         <%= render @notes %>
       </ol>
