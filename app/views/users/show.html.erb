@@ -13,12 +13,10 @@
     <section>
       <%= render 'shared/stats' %>
     </section>
-  </aside>
-  <div class="span8">
-    <%= render 'follow_form' if signed_in? %>
-  <% if @user.interests.any? %>
-    <h4>Interests</h4>
 
+<section>
+<% if @user.interests.any? %>
+    <h4>Interests</h4>
     <table style="margin-top:20px;margin-bottom:40px;">
       <tr>
       <% @interests.each do |interest| %> 
@@ -26,11 +24,15 @@
       </tr>
       <% end %>
     </table>
-
   <% end %>
+</section>
+
+  </aside>
+  <div class="span8" style"border:1px;border-style:solid;">
+    <%= render 'follow_form' if signed_in? %>
     
     <% if @user.notes.any? %>
-      <h4>Notes (<% @notes.count %>)</h4>
+      <h4>Notes</h4>
       <ol class="notes" style="margin-top:20px;">
         <%= render @notes %>
       </ol>
