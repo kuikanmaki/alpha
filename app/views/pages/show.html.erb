@@ -28,7 +28,7 @@
 
     <div class="btn-group">
       <%= link_to "Add Subpage", new_page_path(:id => @page.id, :status => "subpage"), :class => "btn btn-small btn-default" %>
-      <%= link_to 'Add Related Page', new_page_path(:id => @page.id, :status => "relatedpage"), :class => "btn btn-small btn-default" %>
+      <%= link_to 'Add Related Page', new_page_path(:id => @page.id, :status => "relatedpage"), :class => "btn btn-small btn-default" %>    
       <% if !@follower %>
       <br><br>
       <%= button_to 'Add to Interests', follow_page_path(@page.id), :class => "btn btn-small btn-success" %>
@@ -65,45 +65,30 @@
 
 <div class="row">
   <div class="span8 offset2">
-      <h4>Introduction Notes</h4>
+        <h4>Notes</h4>
       <% if current_user.present? %>
-        <%= link_to image_tag("plussign.gif", width: "18"), new_note_path(:id => @page.id, :notetype => "introduction") %>
+        <%= link_to 'Write Note', new_note_path(:id => @page.id), :class => "btn btn-small btn-success" %>
       <% end %>
-      <% if @intronotes.any? %>
+      <% if @notes.any? %>
         <br><br>
         <ol class="notes">
-          <%= render @intronotes %>
+          <%= render @notes %>
         </ol>
-          <%= will_paginate @intronotes %>
+          <%= will_paginate @notes %>
       <br>
-      <% elsif current_user.present? %>
-        <p><br>Be the first one to <%= link_to 'Write an Introduction Note', new_note_path(:id => @page.id, :notetype => "introduction") %>.</p>      
+      <% else %>
+        <div class="emptypage">
+          <h5>No Notes yet...</h5>
+          <p>Be the first one to write Notes to <%= @page.name %></p>
+        </div>
       <% end %>
   </div>
 </div>
 
 <div class="row">
   <div class="span8 offset2">
-      <h4>Study Notes</h4>
-      <% if current_user.present? %>
-        <%= link_to image_tag("plussign.gif", width: "18"), new_note_path(:id => @page.id, :notetype => "study") %>
-      <% end %>      
-      <% if @studynotes.any? %>
-        <br><br> 
-        <ol class="notes">
-          <%= render @studynotes %>
-        </ol>
-        <%= will_paginate @studynotes %>
-      <% elsif current_user.present? %>
-        <p><br>Be the first one to <%= link_to 'Write a Study Note', new_note_path(:id => @page.id, :notetype => "study") %>.</p>        
-      <% end %>
-  </div>
-</div>
-
-<div class="row">
-  <div class="span8 offset2">
-      <h4>Related Pages</h4>
       <% if @relatedpages.any? %> 
+        <h4>Related Pages</h4>
         <table>
           <tr>
             <% @relatedpages.each do |relatedpage| %>
@@ -112,9 +97,7 @@
                 <td><%= link_to relatedpage.name, page_path(:id => relatedpage.id, :backlink => @page.name) %> </td>
               </tr>
             <% end %>
-         </table>
-      <% elsif current_user.present? %>
-         <p>Be the first one to <%= link_to 'Add a Related Page', new_page_path(:id => @page.id, :status => "relatedpage") %>.</p>      
+         </table>     
       <% end %>
   </div>
 </div>
@@ -122,7 +105,7 @@
 <% if current_user.nil? %>
   <div class="row">
     <div class="span8 offset2" style="margin-top:50px;border-style:solid;border-width:1px;padding:10px;">
-      To edit Pages or Add Notes you have to be <%= link_to "Signed in", signin_path %>.
+      To edit Page you have to be <%= link_to "Signed in", signin_path %>.
     </div>
   </div>
 <% end %>      

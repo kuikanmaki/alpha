@@ -32,8 +32,7 @@ before_filter :require_login, :except => [:show, :index]
       @subpages = @page.subpages
       @relatedpages = @page.relatedpages      
       @notes = @page.notes.paginate(page: params[:page])
-      @intronotes = @notes.where(:notetype => "introduction")
-      @studynotes = @notes.where(:notetype => "study")
+      @books = @page.books
       @backlink = params[:backlink]
       @previouspage  = Page.find_by_name(@backlink)
       if current_user.present?

@@ -30,7 +30,6 @@ before_filter :authorize, :except => [:show, :new, :create]
   def new
     @note = Note.new
     @page = Page.find(params[:id]) # gets the value of the parent page
-    @notetype  = params[:notetype] #checks whether the user is adding an introductory note or a study note
 
     respond_to do |format|
       flash.now[:notice] = "<span class='glyphicon icon-chevron-left'></span> Back to <a href='#{url_for(@page)}'>#{@page.name}</a>".html_safe      
@@ -49,19 +48,11 @@ before_filter :authorize, :except => [:show, :new, :create]
   def create
     #@note = Note.new(params[:note])
 
-    if (params[:parent] && params[:notetype]).present?
-    @notetype = params[:notetype]
+    if params[:parent].present?
     @page = Page.find(params[:parent]) # gets the value of the parent page from _form.html.erb
-      if (@notetype == "introduction")
-        @note = current_user.notes.build(:content => params[:content], :notetype => @notetype)
+        @note = current_user.notes.build(:content => params[:content])
         @note.page = @page
-        @note.save
-      end
-      if (@notetype == "study")
-        @note = current_user.notes.build(:content => params[:content], :notetype => @notetype)
-        @note.page = @page
-        @note.save
-      end      
+        @note.save     
     end
 
     respond_to do |format|

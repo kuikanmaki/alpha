@@ -1,4 +1,7 @@
 SampleApp::Application.routes.draw do
+  resources :books
+
+
   resources :notes
   resources :pages
   resources :parentpages

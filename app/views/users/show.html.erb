@@ -30,8 +30,8 @@
   <% end %>
     
     <% if @user.notes.any? %>
-      <h4>Notes</h4>
-      <ol class="notes">
+      <h4>Notes (<% @notes.count %>)</h4>
+      <ol class="notes" style="margin-top:20px;">
         <%= render @notes %>
       </ol>
       <%= will_paginate @notes %>

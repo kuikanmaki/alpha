@@ -4,6 +4,5 @@ class Note < ActiveRecord::Base
   default_scope -> { order('created_at DESC') }
   validates :content, presence: true
   validates :user_id, presence: true
-  validates :notetype, presence: true  
-  attr_accessible :content, :user_id, :page, :notetype
+  attr_accessible :content, :user_id, :page
 end

@@ -11,7 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130910143141) do
+ActiveRecord::Schema.define(:version => 20130913170253) do
+
+  create_table "books", :force => true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.string   "author"
+    t.string   "link"
+    t.integer  "page_id"
+    t.integer  "interest_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "books", ["interest_id"], :name => "index_books_on_interest_id"
+  add_index "books", ["page_id"], :name => "index_books_on_page_id"
 
   create_table "interests", :force => true do |t|
     t.integer  "user_id"

@@ -281,6 +281,13 @@ margin-right: 10px;
   }
 }
 
+.emptypage {
+  border: 1px dashed $gray;
+  margin-top:20px;
+  margin-bottom:20px;
+  padding:10px;
+}
+
 .content {
   display: block;
 }
