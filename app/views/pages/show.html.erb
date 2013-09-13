@@ -31,13 +31,11 @@
       <%= link_to 'Add Related Page', new_page_path(:id => @page.id, :status => "relatedpage"), :class => "btn btn-small btn-default" %>    
       <% if !@follower %>
       <br><br>
-      <%= button_to 'Add to Interests', follow_page_path(@page.id), :class => "btn btn-small btn-success" %>
+      <%= button_to 'Add to Interests', follow_page_path(@page.id), :class => "btn btn-mini btn-primary" %>
       <% else %>
         <br><br>
         <p><span class="glyphicon icon-ok"></span> Status: Following</p>
       <% end %>        
-
-
     </div>
 
      <% if current_user.admin %> 
@@ -67,7 +65,7 @@
   <div class="span8 offset2">
         <h4>Notes</h4>
       <% if current_user.present? %>
-        <%= link_to 'Write Note', new_note_path(:id => @page.id), :class => "btn btn-small btn-success" %>
+        <%= link_to 'Write Note', new_note_path(:id => @page.id), :class => "btn btn-mini btn-inverse" %>
       <% end %>
       <% if @notes.any? %>
         <br><br>
