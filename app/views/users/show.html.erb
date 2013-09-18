@@ -48,13 +48,6 @@
 <script src="http://yui.yahooapis.com/3.12.0/build/yui/yui-min.js"></script>
 <script>
 
-       $(document).ready(
-         function() {
-          setInterval(function() {
-            $('.content').load('/user/interests');
-        }, 3000);
-    });
-
 YUI().use('pjax', function (Y) {
 
     new Y.Pjax({container: '#content'});
