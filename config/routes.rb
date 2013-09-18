@@ -1,9 +1,6 @@
 SampleApp::Application.routes.draw do
   resources :books
-
-
   resources :notes
-  resources :pages
   resources :parentpages
   resources :subpages
   resources :relatedpages
@@ -11,7 +8,7 @@ SampleApp::Application.routes.draw do
 
   resources :users do
     member do
-      get :following, :followers
+      get :following, :followers, :interests
     end
   end
 
@@ -26,6 +23,8 @@ SampleApp::Application.routes.draw do
   resources :relationships, only: [:create, :destroy]
       
   root to: 'static_pages#welcome'
+
+  match '/interests' => 'users#interests'
 
   match '/signup',  to: 'users#new'
   match '/signin',  to: 'sessions#new'

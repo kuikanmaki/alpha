@@ -1,42 +1,63 @@
 <% provide(:title, @user.name) %>
 <div class="row">
-  <aside class="span4">
+  <aside class="span12">
     <section>
       <%= link_to (image_tag @user.avatar.url(:thumb)), @user %><br><br>
-      <h1>
-        <%= @user.name %>
-      </h1>
-      <% if(@user == current_user) %>
-        <%= link_to 'Add Profile Picture', edit_user_path(@user) %>
-      <% end %>
+        <h1>
+          <%= @user.name %>
+        </h1>
+        <% if @user.avatar.path.nil? && current_user.present? %>
+          <%= link_to 'Add Profile Picture', edit_user_path(@user) %>
+        <% end %>
     </section>
+   
     <section>
       <%= render 'shared/stats' %>
     </section>
 
-<section>
-<% if @user.interests.any? %>
-    <h4>Interests</h4>
+  </aside>
+  
+  <div class="span8" style"border:1px;border-style:solid;">
+    <%= render 'follow_form' if signed_in? %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span2">
+  <% if @user.interests.any? %>
     <table style="margin-top:20px;margin-bottom:40px;">
       <tr>
       <% @interests.each do |interest| %> 
-        <td><span class="glyphicon icon-ok"></span> <%= link_to interest.name, "../pages/#{interest.id}" %> </td>
+        <td><span class="glyphicon icon-ok"></span>
+             <%= link_to interest.name, "#{interests_user_path(:interest => interest.id)}",
+             {:class => "yui3-pjax"} %></td>
       </tr>
       <% end %>
     </table>
+        <% else %>
+      No Interests added  
   <% end %>
-</section>
-
-  </aside>
-  <div class="span8" style"border:1px;border-style:solid;">
-    <%= render 'follow_form' if signed_in? %>
-    
-    <% if @user.notes.any? %>
-      <h4>Notes</h4>
-      <ol class="notes" style="margin-top:20px;">
-        <%= render @notes %>
-      </ol>
-      <%= will_paginate @notes %>
-    <% end %>
-  </div>
 </div>
+
+  <div id="content" class="span8" style="margin-top:10px;">
+    
+  </div>
+
+</div>
+
+<script src="http://yui.yahooapis.com/3.12.0/build/yui/yui-min.js"></script>
+<script>
+
+       $(document).ready(
+         function() {
+          setInterval(function() {
+            $('.content').load('/user/interests');
+        }, 3000);
+    });
+
+YUI().use('pjax', function (Y) {
+
+    new Y.Pjax({container: '#content'});
+
+});
+</script>

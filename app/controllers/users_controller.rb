@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @notes = @user.notes.paginate(page: params[:page])
     #@interests = @user.interests
     #@interests = @user.interests.find_by_sql("select * from interests where (user_id = 2)")
-    @interests = @user.interests.find_by_sql("select * from pages where id in (select page_id from interests where (user_id = 1))") 
+    @interests = @user.interests.find_by_sql ["select * from pages where id in (select page_id from interests where (user_id = ?))", @user] 
   end
 
   def new
@@ -63,6 +63,20 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @users = @user.followers.paginate(page: params[:page])
     render 'show_follow'
+  end
+
+  def interests
+    @title = "Interest Name"
+    @user = User.find(params[:id])
+    @page = Page.find(params[:interest])
+    @notes = @user.notes.where(:page_id => @page.id)
+    @notes = @notes.paginate(page: params[:page])
+
+    if @user.present? && @page.present?
+      render :file => 'users/show_interest.html.erb', :layout => false
+    else
+            flash[:warning] = "Something went wrong"
+    end
   end
 
   private
