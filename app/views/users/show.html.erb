@@ -2,7 +2,7 @@
 <div class="row">
   <aside class="span12">
     <section>
-      <%= link_to (image_tag @user.avatar.url(:thumb)), @user %><br><br>
+      <%= link_to (image_tag @user.avatar.url(:thumb), :class => "user_medium"), @user %><br><br>
         <h1>
           <%= @user.name %>
         </h1>

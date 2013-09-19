@@ -17,6 +17,10 @@ end
 
 module SampleApp
   class Application < Rails::Application
+
+    # include Bower components in compiled assets
+    config.assets.paths << Rails.root.join('app', 'assets', 'components')
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
