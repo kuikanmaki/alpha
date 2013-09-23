@@ -273,17 +273,14 @@ margin-right: 10px;
 }
 
 .notes {
+  border: 1px solid $grayLighter;
+  padding: 10px;
   list-style: none;
-  margin: 10px 0 0 0;
-
-  li {
-    margin-top: 10px;
-  }
+  margin: 0 0 0 0;
 }
 
 .emptypage {
   border: 1px dashed $gray;
-  margin-top:20px;
   margin-bottom:20px;
   padding:10px;
 }
@@ -300,6 +297,25 @@ margin-right: 10px;
 
 .content {
   display: block;
+}
+
+.interests
+ {
+  display: block;
+  min-height:200px;
+  border: 1px solid $grayLighter;  
+  margin-top:10px;
+  margin-bottom:10px;
+  padding-top:2px;
+  padding-left:10px;
+  padding-right:10px;
+  padding-bottom:10px;
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  -o-border-radius: 1px;
+  -ms-border-radius: 1px;
+  -khtml-border-radius: 1px;
+  border-radius: 1px;    
 }
 
 .timestamp {

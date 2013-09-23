@@ -2,7 +2,7 @@
   <span class="content"><%= link_to (image_tag note.user.avatar.url(:thumb), :class => "user_small"), note.user %></span>
   <span class="content"><b><%= link_to (note.user.name), note.user %></b></span>  
   <span class="content" style="padding-left:31px;padding-right:31px;">   
-      <% if note.content.length > 600 %>
+      <% if note.content.length > 400 %>
         <p><br><%= raw(truncate(note.content, length: 600)) %>
         <u><%= link_to "more", note %></u></p>
       <% else %>

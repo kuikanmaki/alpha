@@ -1,46 +1,82 @@
 <div class="row">
-  <div class="span2">
-   <%= image_tag @page.image.url(:thumb) %> 
-   <% if @page.image.path.nil? && current_user.present? %>
-     <%= link_to "Add Image", edit_page_path(:id => @page.id, :type => "image"), :class => "btn btn-mini btn-link" %>
-   <% end %>
- </div>
+  <div class="span1">
+     <%= image_tag @page.image.url(:thumb) %> 
+  </div>
+  <div class="span8" style="min-height:120px;">
+    <h3><%= @page.name %></h3>
 
- <div class="span10">
+    <p>Describe <%= @page.name %></p>
+  </div>
 
-<h5>
- <% if @parentpages.any? %>  
-  <% @parentpages.each do |parentpage| %>
-  <%= link_to parentpage.name, parentpage %>
+  <div class="span2 offset1" style="text-align:right">
+  <% if current_user.present? && !@follower %>       
+      <%= button_to 'Add to Interests', follow_page_path(@page.id), :class => "btn btn-mini btn-default" %>
+      <% else %>
+        <p><span class="glyphicon icon-ok"></span> Following</p>
   <% end %>
- <% else %> 
-  <%= link_to 'Main Index', "../pages#index" %>
- <% end %>
-</h5>
 
-<h3><%= @page.name %></h3>
-
-  <% if current_user.present? %>    
+    <% if current_user.present? %> 
 
     <div class="btn-group">
-      <%= link_to "Add Subpage", new_page_path(:id => @page.id, :status => "subpage"), :class => "btn btn-small btn-default" %>
-      <%= link_to 'Add Related Page', new_page_path(:id => @page.id, :status => "relatedpage"), :class => "btn btn-small btn-default" %>    
-      <% if !@follower %>
-      <br><br>
-      <%= button_to 'Add to Interests', follow_page_path(@page.id), :class => "btn btn-mini btn-primary" %>
-      <% else %>
-        <br><br>
-        <p><span class="glyphicon icon-ok"></span> Status: Following</p>
-      <% end %>        
+      <%= link_to 'Write Note', new_note_path(:id => @page.id), :class => "btn btn-mini btn-link" %><br>
+      <%= link_to "Add Subpage", new_page_path(:id => @page.id, :status => "subpage"), :class => "btn btn-mini btn-link" %><br>
+      <%= link_to 'Add Related Page', new_page_path(:id => @page.id, :status => "relatedpage"), :class => "btn btn-mini btn-link" %><br>    
+   <% if @page.image.path.nil? %>
+     <%= link_to "Add Image", edit_page_path(:id => @page.id, :type => "image"), :class => "btn btn-mini btn-link" %>
+   <% end %>           
     </div>
 
      <% if current_user.admin %> 
        <br><%= link_to 'Delete Page', page_path, :confirm => 'Are you sure you want to delete this page?', :method => :delete %>   
      <% end %>
-  <% end %>
+    <% end %>
+  </div>
+</div>
 
-      <% if @subpages.any? %> 
-        <table style="margin-top:20px;">
+<hr>
+
+<div class="row">
+  <div class="span9">
+          <h5>Notes</h5>
+  </div>
+</div>
+
+<div class="row">
+
+<div class="span8">
+      <% if @notes.any? %>
+        <ol class="notes">
+          <%= render @notes %>
+        </ol>
+          <%= will_paginate @notes %>
+      <% else %>
+        <div class="emptypage">
+          <h5>No Notes yet...</h5>
+          <p>Be the first one to write Notes to <%= @page.name %></p>
+        </div>
+      <% end %>
+
+      <hr>
+      <h5>Resources</h5>
+              <div class="emptypage">
+          <h5>- No Resources -</h5>
+        </div>
+  </div>
+
+  <div class="span3 offset1" style="background:rgba(0, 0, 0, 0.1);min-height:800px;">
+ <h6>Belongs to</h6>
+ <% if @parentpages.any? %>  
+  <p><% @parentpages.each do |parentpage| %>
+  <%= link_to parentpage.name, parentpage %>
+  <% end %>
+ <% else %> 
+  <%= link_to 'Main Index', "../pages#index" %>
+ <% end %>
+</p>
+<hr>
+ <h6>Subpages</h6>
+ <% if @subpages.any? %> 
+        <table>
           <tr>
             <% @subpages.each do |subpage| %>
               <tr>
@@ -48,40 +84,12 @@
               </tr>
             <% end %>
          </table>
-      <% else %>        
+      <% else %> 
+      - No Subpages -          
     <% end %>
-
-    <hr>
-
-  </div>
-</div>
-
-<div class="row">
-  <div class="span8 offset2">
-        <h4>Notes</h4>
-      <% if current_user.present? %>
-        <%= link_to 'Write Note', new_note_path(:id => @page.id), :class => "btn btn-mini btn-inverse" %>
-      <% end %>
-      <% if @notes.any? %>
-        <br><br>
-        <ol class="notes">
-          <%= render @notes %>
-        </ol>
-          <%= will_paginate @notes %>
-      <br>
-      <% else %>
-        <div class="emptypage">
-          <h5>No Notes yet...</h5>
-          <p>Be the first one to write Notes to <%= @page.name %></p>
-        </div>
-      <% end %>
-  </div>
-</div>
-
-<div class="row">
-  <div class="span8 offset2">
-      <% if @relatedpages.any? %> 
-        <h4>Related Pages</h4>
+<hr>
+<h6>Related Pages</h6>
+<% if @relatedpages.any? %> 
         <table>
           <tr>
             <% @relatedpages.each do |relatedpage| %>
@@ -90,7 +98,9 @@
                 <td><%= link_to relatedpage.name, page_path(:id => relatedpage.id, :backlink => @page.name) %> </td>
               </tr>
             <% end %>
-         </table>     
+         </table>
+       <% else %> 
+       - No Related Pages -               
       <% end %>
   </div>
 </div>
