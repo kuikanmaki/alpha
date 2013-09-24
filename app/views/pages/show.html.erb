@@ -5,7 +5,11 @@
   <div class="span8" style="min-height:120px;">
     <h3><%= @page.name %></h3>
 
-    <p>Describe <%= @page.name %></p>
+<% if @page.definition.present? %>
+    <p><%= @page.definition %></p>
+      <% else %>
+    <p><%= link_to "Describe " + @page.name, edit_page_path(:id => @page.id, :type => "definition")  %></p>
+      <% end %>
   </div>
 
   <div class="span2 offset1" style="text-align:right">
@@ -21,7 +25,8 @@
       <%= link_to 'Write Note', new_note_path(:id => @page.id), :class => "btn btn-mini btn-link" %><br>
       <%= link_to "Add Subpage", new_page_path(:id => @page.id, :status => "subpage"), :class => "btn btn-mini btn-link" %><br>
       <%= link_to 'Add Related Page', new_page_path(:id => @page.id, :status => "relatedpage"), :class => "btn btn-mini btn-link" %><br>    
-      <%= link_to 'Add Book', new_book_path(:id => @page.id), :class => "btn btn-mini btn-link" %><br>  
+      <%= link_to 'Add Book', new_book_path(:id => @page.id), :class => "btn btn-mini btn-link" %><br>
+      <%= link_to "Add Definition", edit_page_path(:id => @page.id, :type => "definition"), :class => "btn btn-mini btn-link" %><br>  
    <% if @page.image.path.nil? %>
      <%= link_to "Add Image", edit_page_path(:id => @page.id, :type => "image"), :class => "btn btn-mini btn-link" %>
    <% end %>           
