@@ -15,9 +15,14 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
 
+    if @book.present?
+      @pages = @book.pages
+    end
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @book }
+      format.json { render json: @pages }      
     end
   end
 
@@ -40,10 +45,13 @@ class BooksController < ApplicationController
   # POST /books
   # POST /books.json
   def create
-    
-    if params[:page_id].present?
-      
+          
       @book = Book.new(params[:book])
+      @page = Page.find(params[:page_id]) # gets the value of the parent page
+      
+    if (params[:book] && params[:page_id]).present?
+        @book.pages << @page #adds a habtm relationship pages-books
+    end
 
       respond_to do |format|
         if @book.save
@@ -55,7 +63,6 @@ class BooksController < ApplicationController
         end
       end
     end
-  end
 
   # PUT /books/1
   # PUT /books/1.json

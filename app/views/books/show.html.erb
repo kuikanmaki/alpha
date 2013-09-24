@@ -1,15 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<h3><%= @book.name %></h3>
+<h5><%= @book.name %></h5>
 
 <p>
   <b>Author:</b>
   <%= @book.author %>
 </p>
 
+ <% if @pages.any? %>  
+    <p><b>Category:</b> <% @pages.each do |page| %>
+    <%= link_to page.name, page %></p>
+    <% end %>
+  <% else %> 
+     <p> -- </p>  
+  <% end %>
+
 <p>
   <b>Link</b>
    <%= link_to 'link here', @book.link %>
 </p>
-
-<%= link_to 'Edit', edit_book_path(@book) %>

@@ -10,8 +10,8 @@ class CreateBooks < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :books, :slug, unique: true
-    add_index :books, :page_id
-    add_index :books, :interest_id
+    #add_index :books, :slug, unique: true
+    #add_index :books, :page_id
+    #add_index :books, :interest_id
   end
 end

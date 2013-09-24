@@ -1,6 +1,5 @@
 class Book < ActiveRecord::Base
-  belongs_to :page
-  belongs_to :interest
+  has_and_belongs_to_many :pages
   attr_accessible :author, :link, :name, :slug
   extend FriendlyId
   friendly_id :name, use: :slugged

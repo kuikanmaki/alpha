@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130913170253) do
+ActiveRecord::Schema.define(:version => 20130924122708) do
 
   create_table "books", :force => true do |t|
     t.string   "name"
@@ -24,8 +24,10 @@ ActiveRecord::Schema.define(:version => 20130913170253) do
     t.datetime "updated_at",  :null => false
   end
 
-  add_index "books", ["interest_id"], :name => "index_books_on_interest_id"
-  add_index "books", ["page_id"], :name => "index_books_on_page_id"
+  create_table "books_pages", :force => true do |t|
+    t.integer "book_id"
+    t.integer "page_id"
+  end
 
   create_table "interests", :force => true do |t|
     t.integer  "user_id"
@@ -66,6 +68,11 @@ ActiveRecord::Schema.define(:version => 20130913170253) do
     t.datetime "image_updated_at"
     t.string   "slug"
     t.string   "definition"
+  end
+
+  create_table "pages_books", :force => true do |t|
+    t.integer "page_id"
+    t.integer "book_id"
   end
 
   create_table "pages_parentpages", :id => false, :force => true do |t|
