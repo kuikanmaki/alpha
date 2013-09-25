@@ -2,6 +2,7 @@
 
 /* mixins, variables, etc. */
 
+$grayLighter: #C8C8C8;
 $grayMediumLight: #eaeaea;
 
 @mixin box_sizing {
@@ -280,7 +281,22 @@ margin-right: 10px;
 }
 
 .emptypage {
-  border: 1px dashed $gray;
+  border: 1px solid $grayLighter;
+  margin-bottom:20px;
+  padding:10px;
+  min-height:100px;
+}
+
+.bookholder {
+  border: 1px solid $grayLighter;
+  margin-top:20px;
+  margin-bottom:20px;
+  padding:10px;
+}
+
+.profileholder {
+  border: 1px solid $grayLighter;
+  margin-top:20px;
   margin-bottom:20px;
   padding:10px;
 }

@@ -1,21 +1,37 @@
 <p id="notice"><%= notice %></p>
 
-<h5><%= @book.name %></h5>
+<div class="row">
+  <div class="span12">
+  		<h3><%= @book.name %></h3>
+  		<p>By <%= @book.author %></p>
+    </div>
+  </div>
 
-<p>
-  <b>Author:</b>
-  <%= @book.author %>
-</p>
+<div class="row">
+  <div class="span9">
+  	<div class="bookholder" style="height:200px;">
+  		<h5>No Reviews Yet</h5>
+    </div>
+  </div>
 
- <% if @pages.any? %>  
-    <p><b>Category:</b> <% @pages.each do |page| %>
-    <%= link_to page.name, page %></p>
-    <% end %>
-  <% else %> 
-     <p> -- </p>  
-  <% end %>
+  <div class="span3">
+  	<div class="bookholder">
 
-<p>
-  <b>Link</b>
-   <%= link_to 'link here', @book.link %>
-</p>
+<span class="glyphicon icon-book"></span>
+
+	 <% if @pages.any? %>  
+	    <p><% @pages.each do |page| %>
+	    <%= link_to page.name, page %></p>
+	    <% end %>
+	  <% else %> 
+	     <p> -- </p>  
+	  <% end %>
+
+	  <hr>
+
+	<p><b>Link</b> <%= link_to 'link here', @book.link %></p>
+
+
+    </div>
+  </div>
+</div>

@@ -1,74 +1,57 @@
 <% provide(:title, @user.name) %>
+
 <div class="row">
-  <aside class="span12">
+  <div class="span3" style="margin-bottom:10px;">
+        <h3>
+        <%= @user.name %>
+      </h3>
+  </div> 
+</div> 
+<div class="row">
+  <aside class="span3">
     <section>
-      <%= link_to (image_tag @user.avatar.url(:thumb), :class => "user_medium"), @user %><br><br>
-        <h1>
-          <%= @user.name %>
-        </h1>
-        <% if @user.avatar.path.nil? && current_user.present? %>
-          <%= link_to 'Add Profile Picture', edit_user_path(@user) %>
-        <% end %>
+      <%= link_to (image_tag @user.avatar.url(:thumb)), @user %><br><br>
+      <% if(@user == current_user) %>
+        <%= link_to 'Add Profile Picture', edit_user_path(@user) %>
+      <% end %>
     </section>
-   
     <section>
       <%= render 'shared/stats' %>
     </section>
-
   </aside>
-  
-  <div class="span8" style"border:1px;border-style:solid;">
-    <%= render 'follow_form' if signed_in? %>
-  </div>
-</div>
+  <div class="span9">
+    <p><span class="glyphicon icon-map-marker"></span> <b>City, Country</b><br><br></p>
+    <p>Profile Description</p>
+  </div> 
 
-<div class="row">
-  <div class="span2">
-  <% if @user.interests.any? %>
+
+
+  </div>  
+  <div class="row">
+    <div class="span3">
+   <% if @user.interests.any? %>
+    <h4>Interests</h4>
+
     <table style="margin-top:20px;margin-bottom:40px;">
       <tr>
       <% @interests.each do |interest| %> 
-        <td><span class="glyphicon icon-ok"></span>
-             <%= link_to interest.name, "#{interests_user_path(:interest => interest.id)}",
-             {:class => "yui3-pjax"} %></td>
+        <td><span class="glyphicon icon-ok"></span> <%= link_to interest.name, "../pages/#{interest.id}" %> </td>
       </tr>
       <% end %>
     </table>
-        <% else %>
-      No Interests added  
+
   <% end %>
-</div>
-
-  <div id="content" class="span8 interests">
-   <h5><span class="glyphicon icon-pen"></span></h5><hr>
-   <form action="save.php" method="get">
-  <textarea class="textarea" id="content" name="content" style="min-height:200px;"></textarea>
-  <input type="hidden" id="parent" name="parent" value=<%= params[:id] %> />
-  <input type="submit" class="btn btn-small btn-link" />
-</form> 
-
+      </div>
+  <div class="span9">
+    <%= render 'follow_form' if signed_in? %>
+  
+    
+    <% if @user.notes.any? %>
+      <h4>Notes</h4>
+      <ol class="notes">
+        <%= render @notes %>
+      </ol>
+      <%= will_paginate @notes %>
+    <% end %>
   </div>
-
 </div>
-
-<script src="http://yui.yahooapis.com/3.12.0/build/yui/yui-min.js"></script>
-<script>
-
-YUI().use('pjax', function (Y) {
-
-    new Y.Pjax({container: '#content'});
-
-});
-</script>
-
-<script type="text/javascript">
-  $('#content').wysihtml5({
-  "font-styles": false, //Font styling, e.g. h1, h2, etc. Default true
-  "emphasis": true, //Italics, bold, etc. Default true
-  "lists": false, //(Un)ordered lists, e.g. Bullets, Numbers. Default true
-  "html": false, //Button which allows you to edit the generated HTML. Default false
-  "link": true, //Button to insert a link. Default true
-  "image": false, //Button to insert an image. Default true,
-  "color": false //Button to change color of font  
-});
-</script>
