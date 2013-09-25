@@ -8,8 +8,14 @@
 <% if @page.definition.present? %>
     <p><%= @page.definition %></p>
       <% else %>
-    <p><%= link_to "Describe " + @page.name, edit_page_path(:id => @page.id, :type => "definition")  %></p>
+    <% if current_user.present? %>
+    <p><%= link_to "Describe " + @page.name, edit_page_path(:id => @page.id, :type => "definition")  %>
       <% end %>
+      <% if @page.image.path.nil? %>
+           / <%= link_to "Add Image", edit_page_path(:id => @page.id, :type => "image") %>
+    <% end %> 
+  </p>
+  <% end %>    
   </div>
 
   <div class="span2" style="text-align:right">
@@ -24,36 +30,30 @@
 
 <hr>
 
-<div class="row">
-  <div class="span6 offset6" style="text-align:right">
-<% if current_user.present? %> 
-
-    <div class="btn-group">
-      <%= link_to 'Add Note', new_note_path(:id => @page.id), :class => "btn btn-mini btn-inverse" %>
-      <%= link_to 'Add Book', new_book_path(:id => @page.id), :class => "btn btn-mini btn-default" %>
-      <%= link_to "Add Subpage", new_page_path(:id => @page.id, :status => "subpage"), :class => "btn btn-mini btn-default" %>
-      <%= link_to 'Add Related Page', new_page_path(:id => @page.id, :status => "relatedpage"), :class => "btn btn-mini btn-default" %>    
-   <% if @page.image.path.nil? %>
-     <%= link_to "Add Image", edit_page_path(:id => @page.id, :type => "image"), :class => "btn btn-mini btn-default" %>
-   <% end %>           
-    </div>
-
-     <% if current_user.admin %> 
-       <br><%= link_to 'Delete Page', page_path, :confirm => 'Are you sure you want to delete this page?', :method => :delete %>   
-     <% end %>
+<div class="row" style="padding-bottom:10px;">
+    <div class="span1">
+          <h5>Notes</h5>
+  </div>
+   
+  <div class="span2" style="text-align:right">
+    <% if current_user.present? && current_user.admin %> 
+    <%= link_to 'Delete Page', page_path, :confirm => 'Are you sure you want to delete this page?', :method => :delete %>   
     <% end %>
   </div>
 </div>
 
-<div class="row">
-  <div class="span9">
-          <h5>Notes</h5>
-  </div>
-</div>
 
 <div class="row">
 
 <div class="span9">
+
+<% if current_user.present? %> 
+          <%= link_to "Add Notes", new_note_path(:id => @page.id), :class => "btn btn-mini btn-link" %>
+            <% if current_user.present? %>
+               <%= link_to "Add Books", new_book_path(:id => @page.id), :class => "btn btn-mini btn-link" %>
+             <% end %>
+      <% end %> 
+
       <% if @notes.any? %>
         <ol class="notes">
           <%= render @notes %>
@@ -67,7 +67,8 @@
       <% end %>
 
       <hr>
-      <h5>Resources - Books</h5>
+      <h5>Resources - Books
+      </h5>
 
       <% if @books.any? %>  
         <p><br> <% @books.each do |book| %>
@@ -81,7 +82,7 @@
 
   </div>
 
-  <div class="span3" style="background:rgba(0, 0, 0, 0.1);min-height:800px;">
+  <div class="span3" style="background:rgba(205, 205, 193, 0.2);min-height:800px;">
  <h6>Belongs to</h6>
  <% if @parentpages.any? %>  
   <p><% @parentpages.each do |parentpage| %>
@@ -92,7 +93,11 @@
  <% end %>
 </p>
 <hr>
- <h6>Subpages</h6>
+ <h6>Subpages
+  <% if current_user.present? %> 
+  <%= link_to "+", new_page_path(:id => @page.id, :status => "subpage"), :class => "btn btn-mini btn-default" %>
+  <% end %>
+</h6>
  <% if @subpages.any? %> 
         <table>
           <tr>
@@ -106,7 +111,11 @@
       - No Subpages -          
     <% end %>
 <hr>
-<h6>Related Pages</h6>
+<h6>Related Pages
+  <% if current_user.present? %> 
+  <%= link_to "+", new_page_path(:id => @page.id, :status => "relatedpage"), :class => "btn btn-mini btn-default" %>
+  <% end %>
+</h6>
 <% if @relatedpages.any? %> 
         <table>
           <tr>
