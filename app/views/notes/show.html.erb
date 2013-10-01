@@ -1,23 +1,35 @@
 <div class="row">
+  <div class="span9">
+    <div class="note">
+      <div class="noteheader">
+        <div class="notesubjectbar">
+          <p><b><%= @note.page.name %> Notes</b></p>
+        </div>  
 
-<div class="span9 note">
-  <p>
+        <% if @title.present? %>
+            <h4><%= @title %></h4>
+          <% end %>
+          <p>
+            <% if @note.page %>
+              <span style="color:gray;font-size:1.0em;">By <%= @note.user.name %> in <%= link_to (@note.page.name), @note.page %> <%= time_ago_in_words(@note.created_at) %> ago</span>
+            <% end %>
+            <% if current_user?(@note.user) %>
+              <%= link_to 'Edit', edit_note_path(@note) %>
+            <% end %>
+          </p>
+      </div>
 
-    <%= link_to (image_tag @note.user.avatar.url(:thumb), :class => "user_small"), @note.user %>
-    <b><%= @note.user.name %></b><br><br>
+      <div class="notebody">  
+        <p>
+          <hr><%= raw(@note.content) %>
+        </p>    
+      </div>
 
-    <% if @note.page %>
-      <span style="color:gray;font-size:1.0em;">Subject: <%= link_to (@note.page.name), @note.page %> | Published <%= time_ago_in_words(@note.created_at) %> ago</span>
-    <% end %>
-
-    <% if current_user?(@note.user) %>
-      <br><br> <%= link_to 'Edit', edit_note_path(@note) %>
-    <% end %>
-
-    <hr><br> <%= raw(@note.content) %> <br><br>
-
-  </p>
-  
- </div>
+      <div class="notefooter">
+        <%= link_to (image_tag @note.user.avatar.url(:thumb), :class => "user_small"), @note.user %>
+        <b><%= @note.user.name %></b>
+        </p>
+      </div>
+    </div>
+  </div>
 </div>
-

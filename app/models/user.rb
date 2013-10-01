@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation, :avatar
   has_secure_password
   has_many :notes
+  make_voter
   has_many :interests
   has_many :pages, through: :interests, :uniq => true
   accepts_nested_attributes_for :interests
@@ -21,7 +22,8 @@ class User < ActiveRecord::Base
                                            :url => "/system/:attachment/:id/:style/:filename"
 
   before_save { email.downcase! }
-  before_save :create_remember_token
+  #before_save :create_remember_token
+  before_create :create_remember_token
 
   validates :name,  presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

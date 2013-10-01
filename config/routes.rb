@@ -18,6 +18,12 @@ SampleApp::Application.routes.draw do
     end
   end
 
+  resources :notes do
+    member do
+      post :upvote
+    end
+  end
+
   resources :sessions, only: [:new, :create, :destroy]
   resources :notes, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]

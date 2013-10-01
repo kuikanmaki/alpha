@@ -15,6 +15,9 @@
   <div class="span9">
 
 <form action="save.php" method="get">
+    <div class="field">
+    Title<br><br> <%= text_field_tag(:title) %>
+  </div>
   <textarea class="textarea" id="content" name="content" placeholder="Enter text ..." style="min-height:400px;"></textarea>
   <input type="hidden" id="parent" name="parent" value=<%= params[:id] %> />
   <input type="submit" class="btn btn-primary" />

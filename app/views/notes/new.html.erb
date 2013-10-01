@@ -3,10 +3,6 @@
 
   <h3>New Note - <%= @page.name %></h3>
 
-  <div class="alert alert-info">
-    <h6><span class="glyphicon icon-info-sign"></span> A Note is a brief guide on how to learn this topic.</h6>
-  </div>
-
   <% if current_user.present? %>
     <%= render 'form' %>
   <% else %>

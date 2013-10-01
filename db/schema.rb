@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130924122708) do
+ActiveRecord::Schema.define(:version => 20130928173854) do
 
   create_table "books", :force => true do |t|
     t.string   "name"
@@ -51,9 +51,12 @@ ActiveRecord::Schema.define(:version => 20130924122708) do
     t.text     "content",    :limit => 255
     t.integer  "user_id"
     t.integer  "page_id"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
     t.string   "notetype"
+    t.string   "title"
+    t.integer  "up_votes",                  :default => 0, :null => false
+    t.integer  "down_votes",                :default => 0, :null => false
   end
 
   add_index "notes", ["page_id"], :name => "index_notes_on_page_id"
@@ -112,9 +115,25 @@ ActiveRecord::Schema.define(:version => 20130924122708) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.boolean  "admin",               :default => false
+    t.integer  "up_votes",            :default => 0,     :null => false
+    t.integer  "down_votes",          :default => 0,     :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
+
+  create_table "votings", :force => true do |t|
+    t.string   "voteable_type"
+    t.integer  "voteable_id"
+    t.string   "voter_type"
+    t.integer  "voter_id"
+    t.boolean  "up_vote",       :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "votings", ["voteable_type", "voteable_id", "voter_type", "voter_id"], :name => "unique_voters", :unique => true
+  add_index "votings", ["voteable_type", "voteable_id"], :name => "index_votings_on_voteable_type_and_voteable_id"
+  add_index "votings", ["voter_type", "voter_id"], :name => "index_votings_on_voter_type_and_voter_id"
 
 end

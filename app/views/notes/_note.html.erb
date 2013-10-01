@@ -1,20 +1,31 @@
-<li>
-  <span class="content"><%= link_to (image_tag note.user.avatar.url(:thumb), :class => "user_small"), note.user %></span>
-  <span class="content"><b><%= link_to (note.user.name), note.user %></b></span>  
-  <span class="content" style="padding-left:31px;padding-right:31px;">   
-      <% if note.content.length > 300 %>
-        <p><br><%= raw(truncate(note.content, length: 300)) %>
-        <u><%= link_to "more", note %></u></p>
-      <% else %>
-        <p><br><%= raw(note.content) %></p>
-      <% end %>
-        <span class="timestamp"><%= time_ago_in_words(note.created_at) %> ago</span>
-        <span class="timestamp"><%= link_to (note.page.name), note.page %></span>
-        <% if current_user?(note.user) %>
-          <%= link_to "delete", note, method: :delete,
-                                     data: { confirm: 'You sure?' },
-                                     title: note.content %>
-        <% end %>   
-      <hr>
-  </span>      
-</li>
+<div class="row">
+
+  <div class="span8 offset1">
+    <div class="notes content">
+    <% if note.title.present? %>
+      <h4 style="padding-bottom:2px;"><%= link_to note.title, note %></h4>
+    <% end %>
+        <% if note.content.length > 300 %>
+          <p><%= raw(truncate(note.content, length: 300)) %>
+          <u><%= link_to "more", note %></u></p>
+        <% else %>
+          <p><%= raw(note.content) %></p>
+        <% end %>
+          <span class="timestamp"><%= link_to (note.user.name), note.user %>, </span>  
+          <span class="timestamp"><%= time_ago_in_words(note.created_at) %> ago</span>
+          <span class="timestamp"><%= link_to (note.page.name), note.page %></span>
+          <% if current_user?(note.user) %>
+            <%= link_to "delete", note, method: :delete,
+                                       data: { confirm: 'You sure?' },
+                                       title: note.content %>
+          <% end %>   
+    </div>
+  </div>
+  <div class="span3" >
+    <%= link_to (image_tag note.user.avatar.url(:thumb), :class => "user_medium"), note.user %><br><br>
+    <span class="glyphicon icon-thumbs-up"></span> <%= note.votes %>
+    <% if current_user.present? %>
+    <%= link_to "Upvote", upvote_note_url(note), :method => :post %>  
+    <% end %>
+  </div>
+</div>

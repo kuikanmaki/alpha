@@ -18,18 +18,9 @@
     <section>
       <%= render 'shared/stats' %>
     </section>
-  </aside>
-  <div class="span9">
-    <p><span class="glyphicon icon-map-marker"></span> <b>City, Country</b><br><br></p>
-    <p>Profile Description</p>
-  </div> 
 
-
-
-  </div>  
-  <div class="row">
-    <div class="span3">
-   <% if @user.interests.any? %>
+    <section>
+ <% if @user.interests.any? %>
     <h6>Interests</h6>
 
     <table style="margin-top:20px;margin-bottom:40px;">
@@ -41,17 +32,20 @@
     </table>
 
   <% end %>
-      </div>
-  <div class="span9">
-    <%= render 'follow_form' if signed_in? %>
+    </section>
+
+  </aside>
   
-    
+  </div>  
+  <div class="row">
+
+  <div class="span12">
+    <%= render 'follow_form' if signed_in? %>
     <% if @user.notes.any? %>
       <h4>Notes</h4>
-      <ol class="notes">
         <%= render @notes %>
-      </ol>
       <%= will_paginate @notes %>
     <% end %>
   </div>
 </div>
+  </div>

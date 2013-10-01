@@ -1,7 +1,7 @@
 class NotesController < ApplicationController
   include ActionView::Helpers::TextHelper
 
-before_filter :authorize, :except => [:show, :new, :create]
+before_filter :authorize, :except => [:show, :new, :create, :upvote]
 
   # GET /notes
   # GET /notes.json
@@ -18,6 +18,7 @@ before_filter :authorize, :except => [:show, :new, :create]
   # GET /notes/1.json
   def show
     @note = Note.find(params[:id])
+    @title = @note.title
 
     respond_to do |format|
       format.html # show.html.erb
@@ -50,9 +51,9 @@ before_filter :authorize, :except => [:show, :new, :create]
 
     if params[:parent].present?
     @page = Page.find(params[:parent]) # gets the value of the parent page from _form.html.erb
-        @note = current_user.notes.build(:content => params[:content])
+        @note = current_user.notes.build(:title => params[:title], :content => params[:content])
         @note.page = @page
-        @note.save     
+        @note.save        
     end
 
     respond_to do |format|
@@ -80,6 +81,16 @@ before_filter :authorize, :except => [:show, :new, :create]
         format.json { render json: @note.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def upvote
+    @note = Note.find params[:id]
+    current_user.up_vote(@note) #this line causes the user to be logged out. why?
+    flash[:message] = 'Thanks for voting!'
+    redirect_to note_path(@note)
+  rescue MakeVoteable::Exceptions::AlreadyVotedError
+    flash[:error] = 'Already voted!'
+    redirect_to note_path(@note)
   end
 
   # DELETE /notes/1
