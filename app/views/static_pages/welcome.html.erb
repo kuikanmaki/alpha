@@ -1,0 +1,44 @@
+<% provide(:title, 'Welcome') %>
+
+<div class="row" >
+  <div class="span12">
+  <%= image_tag("athens.png") %>
+  </div>
+</div>
+
+<div class="row" style="position:absolute;top:70px;padding-left:20px;">
+  <div class="span10" style="text-align:center;">
+    <h1 style="color:white;text-shadow:0 -1px 10px rgba(0,0,0,0.9);">What would you like to learn today?</h3>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span12">
+    <div>
+   <h5>Note Academy is a learning reference that anyone can edit and use. We are now in Alpha testing phase. If you would like to participate, Sign up!<br><br></h5>
+   	<%= link_to "Sign up", new_user_path, class: "btn btn-large btn-primary" %><br><br>
+    </div>
+
+  </div>
+  </div>
+
+<div class="row">
+  <div class="span5">
+    <div>
+
+      <p style="line-height:90%"><b>Follow Note Academy</b><br><br>
+        <%= image_tag("facebook.png") %>
+        <a href="http://www.facebook.com/noteacademy" target="_blank">noteacademy</a><br>
+        <%= image_tag("twitter.png") %>
+        <a href="https://twitter.com/noteacad" target="_blank">@noteacad</a><br>
+        <%= image_tag("tumblr.png") %> 
+        <a href="http://noteacademy.tumblr.com" target="_blank">noteacademy.tumblr.com</a><br>
+      </p>
+
+    <span class="glyphicon icon-chevron-right"></span> <%= link_to 'Browse All Subjects (A-Z)', 'pages#index' %>
+    <br>
+    <span class="glyphicon icon-chevron-right"></span> <%= link_to 'About Note Academy', 'about' %>
+
+    </div>
+  </div>  
+</div>

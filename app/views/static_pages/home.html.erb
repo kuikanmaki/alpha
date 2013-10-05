@@ -1,0 +1,147 @@
+<% if signed_in? %>
+  <div class="row">
+    <aside class="span4">
+      <section>
+        <%= render 'shared/user_info' %>
+      </section>
+      <section>
+        <%= render 'shared/stats' %>
+      </section>
+      <section>
+        <%= render 'shared/micropost_form' %>
+      </section>
+    </aside>
+    <div class="span8">
+      <h3>Micropost Feed</h3>
+      <%= render 'shared/feed' %>
+    </div>
+  </div>
+<% else %>
+
+<div class="row">
+
+ <div class="span12">
+
+  <h3>Free Curriculums on the Web</h3>
+
+                       <%= image_tag "searchbar.png" %>
+
+ </div>
+
+ <div class="span10">
+
+  <h4>Note Academy is a learning reference site. We publish learning resources and curriculums for every single subject in the world.</h4>
+
+ </div>
+
+  <div class="span2">
+
+  <%= link_to "Sign up!", signup_path, class: "btn btn-large btn-primary" %>
+
+ </div>
+
+ <div class="span12">
+
+                    <h2>Index</h2>
+
+                       <%= image_tag "gridsymbol.png" %>
+
+                     <p><a href="#">Arts and Humanities</a><br>
+                        <a href="#">Mathematics and Natural Sciences</a><br>
+                        <a href="#">Social Sciences</a><br></p>
+
+                       <%= image_tag "gridsymbol.png" %>
+
+                        <p><a href="#">Business</a><br>
+                        <a href="#">Engineering</a><br>
+                        <a href="#">Law</a><br>                                                                                                      
+                        <a href="#">Medicine</a><br></p>
+        
+                       <%= image_tag "gridsymbol.png" %>
+        
+                        <p><a href="#">Accounting</a><br>
+                        <a href="#">African American Studies</a><br>
+                        <a href="#">American Studies</a><br>
+                        <a href="#">Anthropology</a><br>
+                        <a href="#">Applied Mathematics</a><br>
+                        <a href="#">Applied Physics</a><br>
+                        <a href="#">Archaeological Studies</a><br>
+                        <a href="#">Architecture</a><br>
+                        <a href="#">Art</a><br>
+                        <a href="#">Astronomy</a><br>
+                        <a href="#">Biology</a><br>
+                        <a href="#">Biomedical Engineering</a><br>
+                        <a href="#">British Studies</a><br>
+                        <a href="#">Chemical  Engineering</a><br>
+                        <a href="#">Classics</a><br>
+                        <a href="#">Cognitive Science</a><br>
+                        <a href="#">Computer Science</a><br>
+                        <a href="#">Computer Science and Mathematics</a><br>
+                        <a href="#">Computer Science and Psychology</a><br>
+                        <a href="#">Computing and the Arts</a><br>
+                        <a href="#">East Asian Languages and Literatures</a><br>
+                        <a href="#">East Asian Studies</a><br>
+                        Economics<br>
+                        Economics and Mathematics<br>
+                        Electrical Engineering<br>
+                        Electrical Engineering and Computer Science<br>
+                        Engineering<br>
+                        Engineering and Applied Science<br>
+                        English Language and Literature<br>
+                        Environment<br>
+                        Environmental Engineering<br>
+                        Environmental Studies<br>
+                        Ethics, Politics, and Economics<br>
+                        Ethnicity, Race, and Migration<br>
+                        Film Studies<br>
+                        Forestry and Environmental Studies<br>
+                        French<br>
+                        Geology and Geophysics<br>
+                        Germanic Languages and Literatures<br>
+                        German Studies<br>
+                        Global Affairs<br>
+                        Global Health Studies<br>
+                        Hellenic Studies<br>
+                        History<br>
+                        History of Art<br>
+                        History of Science, History of Medicine<br>
+                        Humanities<br>
+                        International Studies<br>
+                        Italian<br>
+                        Judaic Studies<br>
+                        Latin American Studies<br>
+                        Linguistics<br>
+                        Literature<br>
+                        Mathematics<br>
+                        Mathematics and Philosophy<br>
+                        Mathematics and Physics<br>
+                        Mechanical Engineering<br>
+                        Media Theory and History<br>
+                        Modern Middle East Studies<br>
+                        Molecular Biophysics and Biochemistry<br>
+                        Music<br>
+                        Near Eastern Languages and Civilizations<br>
+                        Operations Research<br>
+                        Philosophy<br>
+                        Physics<br>
+                        Physics and Philosophy<br>
+                        Political Science<br>
+                        Portuguese<br>
+                        Psychology<br>
+                        Public Health<br>
+                        Religious Studies<br>
+                        Russian and East European Studies<br>
+                        Science<br>
+                        Slavic Languages and Literatures<br>
+                        Sociology<br>
+                        South Asian Studies<br>
+                        Southeast Asia Studies<br>
+                        Spanish<br>
+                        Statistics<br>
+                        Education Studies<br>
+                        Theater Studies<br>
+                        Urban Studies<br></p>
+
+ </div>
+</div>
+<% end %>

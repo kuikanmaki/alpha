@@ -1,0 +1,24 @@
+<div class="row">
+ <div class="span12">
+
+<h4>Main Index</h4>
+
+  <hr>
+  <% if current_user.present? %>
+    <div class="btn-group">
+      <%= link_to "Add Page", new_page_path, :class => "btn btn-small btn-default" %>
+    </div><br>
+  <% end %>
+
+  <table>
+  <tr>
+  <% @pages.each do |page| %>
+    <tr>
+      <td><span class="glyphicon icon-chevron-right"></span> <%= link_to page.name, page %> </td>
+    </tr>
+  <% end %>
+  </table>
+
+<br />
+ </div>
+</div>  

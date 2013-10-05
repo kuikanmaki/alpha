@@ -1,0 +1,68 @@
+<% provide(:title, @user.name) %>
+
+<div class="row">
+  <div class="span3" style="margin-bottom:10px;">
+        <h3>
+        <%= @user.name %>
+      </h3>
+  </div> 
+</div> 
+<div class="row">
+  <aside class="span3">
+    <section>
+      <%= link_to (image_tag @user.avatar.url(:thumb)), @user %><br><br>
+      <% if(@user == current_user) %>
+        <%= link_to 'Add Profile Picture', edit_user_path(@user) %>
+      <% end %>
+    </section>
+    <section>
+      <%= render 'shared/stats' %>
+    </section>
+
+    <section>
+      <%= render 'follow_form' if signed_in? %>
+    </section>
+
+  </aside>
+  
+  </div>   
+
+  <div class="row">
+  <div class="span12">
+  <% if @user.interests.any? %>
+    <h4>Interests</h4>
+
+    <table style="margin-top:20px;margin-bottom:20px;">
+      <tr>
+      <% @interests.each do |interest| %> 
+        <td><span class="glyphicon icon-ok"></span> <%= link_to interest.name, "../pages/#{interest.id}" %> </td>
+      </tr>
+      <% end %>
+    </table>
+
+  <% end %>
+  </div>
+</div>
+
+  <div class="row">
+  <div class="span12">
+    <% if @user.notes.any? %>
+      <h4>Notes</h4>
+        <%= render @notes %>
+      <%= will_paginate @notes %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span9">
+  <h4>Activity Feed</h4>
+
+  <% @activities.each do |activity| %>
+    <div class="activity">
+    <%= link_to activity.owner.name, activity.owner if activity.owner %>
+      <%= render_activity activity %>
+    </div> 
+  <% end %>
+  </div>
+</div> 
