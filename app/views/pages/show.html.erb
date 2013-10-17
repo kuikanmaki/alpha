@@ -1,28 +1,39 @@
-<div class="row">
-  <div class="span1">
-     <%= image_tag @page.image.url(:thumb) %> 
+<% provide(:title, @page.name) %>
+
+<div class="row" style="margin-bottom:10px;margin-top:10px;">
+<div class="col-md-2">
+     <% if current_user.present? %>
+     <%= link_to (image_tag @page.image.url(:thumb), :size => "120x120"), edit_page_path(:id => @page.id, :type => "image") %>
+     <% else %>
+     <%= image_tag @page.image.url(:thumb), :size => "120x120" %>
+     <% end %> 
   </div>
-  <div class="span8">
+  <div class="col-md-7">
     <h3><%= @page.name %></h3>
 
-<% if @page.definition.present? %>
-    <p><%= @page.definition %></p>
-      <% else %>
-    <% if current_user.present? %>
-    <p><%= link_to "Describe " + @page.name, edit_page_path(:id => @page.id, :type => "definition")  %>
+    <% if @page.definition.present? %>
+        <p><%= @page.definition %>
+          <% if current_user.present? %>
+            (<%= link_to "Edit", edit_page_path(:id => @page.id) %>)</p>
+          <% end %>
+        </p>  
+    <% else %>
+      <% if current_user.present? %>
+        <p><%= link_to "Describe " + @page.name, edit_page_path(:id => @page.id, :type => "definition")  %></p>
       <% end %>
-      <% if @page.image.path.nil? %>
-           / <%= link_to "Add Image", edit_page_path(:id => @page.id, :type => "image") %>
-    <% end %> 
-  </p>
-  <% end %>  
+    <% end %>      
+
+    <% if current_user.present? %>
+      <p></p>
+    <% end %>  
+
   </div>
 
-  <div class="span2" style="text-align:right">
+  <div class="col-md-2 col-md-offset-1 col-lg-offset-1" style="text-align:right">
   <% if current_user.present? && !@follower %>       
-      <%= button_to 'Add to Interests', follow_page_path(@page.id), :class => "btn btn-mini btn-inverse" %>
+      <%= button_to 'Add to Interests', follow_page_path(@page.id), :class => "btn btn-xs btn-inverse" %>
       <% else %>
-        <p><span class="glyphicon icon-ok"></span> Following</p>
+      <%= button_to 'Unfollow', unfollow_page_path(@page.id), :class => "btn btn-xs btn-default" %>      
   <% end %>
 
   <% if current_user.present? && current_user.admin %> 
@@ -36,86 +47,97 @@
 
 <% if current_user.present? %> 
   <div class="row">
-    <div class="span6">          
-          <%= link_to "Add Notes", new_note_path(:id => @page.id), :class => "btn btn-mini btn-link" %>
-          <%= link_to "Add Books", new_book_path(:id => @page.id), :class => "btn btn-mini btn-link" %>
+    <div class="col-md-6 col-md-offset-2">
+    <h4>Notes</h4>              
+          <%= link_to "Add Notes", new_note_path(:id => @page.id), :class => "btn btn-xs btn-link" %>
+          <%= link_to "Add Books", new_book_path(:id => @page.id), :class => "btn btn-xs btn-link" %>
     </div>
   </div>
 <% end %> 
 
-          <div class="row">
-            <div class="span12"> 
-      <% if @notes.any? %>
-          <%= render @notes %>
-          <%= will_paginate @notes %>
-      <% else %>
- 
-              <div class="emptypage">
-                <h5>No Notes yet...</h5>
-                <p>Be the first one to write Notes to <%= @page.name %></p>
-              </div>     
-      <% end %>
-          </div>
-        </div>         
-
 <div class="row">
-  <div class="span8"> 
-      <% if @books.any? %>  
+  <div class="col-md-10 col-md-offset-2"> 
+    <% if @notes.any? %>
+      <div class="row">
+        <%= render @notes %>
+          <%= will_paginate @notes %>
+       </div>   
+    <% else %>
+      <div class="col-md-6 emptypage">
+        <h5>No Notes yet...</h5>
+          <p>Be the first one to write Notes to <%= @page.name %></p>
+      </div>     
+    <% end %>
+    <% if @books.any? %>  
         <h5>Books</h5>
         <p><br> <% @books.each do |book| %>
         <span class="glyphicon icon-book"></span> <%= book.author %> - <i><%= link_to book.name, book %></i></p>
         <% end %>
       <% end %>
   </div>
-</div> 
+</div>  
 
 <div class="row">
-  <div class="span8">
+  <div class="col-md-10 col-md-offset-2">
     <div class="navigationbar">
 
-     <h6>Subpages
-      <% if current_user.present? %> 
-      <%= link_to "+", new_page_path(:id => @page.id, :status => "subpage"), :class => "btn btn-mini btn-default" %>
-      <% end %>
-    </h6>
      <% if @subpages.any? %> 
-            <table>
+     <h5>Subpages
+      </h5>
+        <table style="margin-bottom:3px;">
+          <tr>
+            <% @subpages.each do |subpage| %>
               <tr>
-                <% @subpages.each do |subpage| %>
-                  <tr>
-                    <td> <span class="glyphicon icon-chevron-right"></span> <%= link_to subpage.name, subpage %> </td>
-                  </tr>
-                <% end %>
-             </table>
-          <% else %> 
-          - No Subpages -          
-        <% end %>
-    <hr>
-    <h6>Related Pages
-      <% if current_user.present? %> 
-      <%= link_to "+", new_page_path(:id => @page.id, :status => "relatedpage"), :class => "btn btn-mini btn-default" %>
+                <td style="padding-top:1px;padding-right:10px;"><%= link_to (image_tag subpage.image.url(:thumb), :size => "20x20"), subpage %></td>
+                <td><%= link_to subpage.name, page_path(:id => subpage.id) %> </td>
+              </tr>
+              <% end %>
+        </table>
+        <% if current_user.present? %> 
+          <%= link_to "+", new_page_path(:id => @page.id, :status => "subpage"), :class => "btn btn-xs btn-default" %>
+        <% end %>  
+      <% else %> 
+      <% if current_user.present? %>
+        <h5>Subpages (Add)
+          <br><br><%= link_to "+", new_page_path(:id => @page.id, :status => "subpage"), :class => "btn btn-xs btn-default" %>
+          <br><br>
+      <% else %>
+      - No Related Pages -
       <% end %>
-    </h6>
+      </h5>        
+    <% end %>
     <% if @relatedpages.any? %> 
-        <table>
+        <h5>Related Pages
+      </h5>    
+        <table style="margin-bottom:3px;">
           <tr>
             <% @relatedpages.each do |relatedpage| %>
               <tr>
-                <td width="20" style="padding-top:1px;padding-right:10px;"><%= link_to (image_tag relatedpage.image.url(:thumb)), relatedpage %></td>
+                <td style="padding-top:1px;padding-right:10px;"><%= link_to (image_tag relatedpage.image.url(:thumb), :size => "20x20"), relatedpage %></td>
                 <td><%= link_to relatedpage.name, page_path(:id => relatedpage.id, :backlink => @page.name) %> </td>
               </tr>
             <% end %>
          </table>
-       <% else %> 
-       - No Related Pages -               
+         <% if current_user.present? %> 
+           <%= link_to "+", new_page_path(:id => @page.id, :status => "relatedpage"), :class => "btn btn-xs btn-default" %>
+         <% end %>
+    <% else %> 
+      <% if current_user.present? %>
+        <h5>Related Pages (Add)
+          <br><br><%= link_to "+", new_page_path(:id => @page.id, :status => "relatedpage"), :class => "btn btn-xs btn-default" %>
+          <br><br>      
+      <% else %>
+      - No Related Pages -
       <% end %>
-    </div>
-  </div>
-</div>  
+      </h5> 
+    <% end %>
+    </div>  
+  </div>        
+</div> 
 
 <% if current_user.nil? %>
   <div class="row">
-    <div class="span9" style="margin-top:50px;border-style:solid;border-width:1px;padding:10px;">
+    <div class="col-md-6 col-md-offset-2" style="margin-top:50px;border-style:solid;border-width:1px;padding:10px;">
       To edit Page you have to be <%= link_to "Signed in", signin_path %>.
     </div>
   </div>

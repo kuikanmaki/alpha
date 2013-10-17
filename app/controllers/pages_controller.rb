@@ -152,6 +152,24 @@ before_filter :require_login, :except => [:show, :index]
     end       
   end
 
+  def unfollow #adds user as a follower to a page/topic
+      @user = current_user
+      @page = Page.find(params[:id])
+      #@interest = @user.interests.find_by_sql ["select * from pages where id in (select page_id from interests where (user_id = ?))", @user] 
+      @user.interests.destroy( :page_id => @page.id )
+
+      
+      respond_to do |format|
+      if @user.interests.destroy
+        format.html { redirect_to @page, notice: 'This page has been removed from your interests.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to @page, notice: 'Something went wrong.' }
+        format.json { head :no_content }
+      end  
+    end       
+  end
+
   # DELETE /pages/1
   # DELETE /pages/1.json
   def destroy

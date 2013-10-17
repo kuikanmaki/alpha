@@ -8,6 +8,9 @@ SampleApp::Application.routes.draw do
   resources :interests
   resources :activities
 
+  resources :rooms  
+  match '/party/:id', :to => "rooms#party", :as => :party, :via => :get
+
   resources :users do
     member do
       get :following, :followers, :interests
@@ -17,6 +20,7 @@ SampleApp::Application.routes.draw do
   resources :pages do
     member do
       post :follow
+      post :unfollow
     end
   end
 

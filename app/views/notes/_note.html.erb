@@ -1,12 +1,18 @@
-<div class="row">
-
-  <div class="span8">
+<div class="col-md-8">
     <div class="notes content">
+    <div class="notesprofile">
+    <%= link_to (image_tag note.user.avatar.url(:thumb), :size => "30x30"), note.user %><br><br>
+    <span class="glyphicon icon-thumbs-up"></span> <%= note.votes %>
+    <% if current_user.present? %>
+    <%= link_to "Upvote", upvote_note_url(note), :method => :post %>  
+    <% end %>
+    </div>    
+
     <% if note.title.present? %>
       <h4 style="padding-bottom:2px;"><%= link_to note.title, note %></h4>
     <% end %>
-        <% if note.content.length > 300 %>
-          <p><%= raw(truncate(note.content, length: 300)) %>
+        <% if note.content.length > 1200 %>
+          <p><%= raw(truncate(note.content, length: 1200)) %>
           <u><%= link_to "more", note %></u></p>
         <% else %>
           <p><%= raw(note.content) %></p>
@@ -19,13 +25,6 @@
                                        data: { confirm: 'You sure?' },
                                        title: note.content %>
           <% end %>   
+
     </div>
   </div>
-  <div class="span3" >
-    <%= link_to (image_tag note.user.avatar.url(:thumb), :class => "user_medium"), note.user %><br><br>
-    <span class="glyphicon icon-thumbs-up"></span> <%= note.votes %>
-    <% if current_user.present? %>
-    <%= link_to "Upvote", upvote_note_url(note), :method => :post %>  
-    <% end %>
-  </div>
-</div>

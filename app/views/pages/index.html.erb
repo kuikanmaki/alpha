@@ -1,23 +1,23 @@
 <div class="row">
- <div class="span12">
+ <div class="col-md-12">
 
 <h4>Main Index</h4>
 
   <hr>
   <% if current_user.present? %>
     <div class="btn-group">
-      <%= link_to "Add Page", new_page_path, :class => "btn btn-small btn-default" %>
-    </div><br>
+      <%= link_to "Add Page", new_page_path, :class => "btn btn-xs btn-default" %>
+    </div><br><br>
   <% end %>
 
-  <table>
-  <tr>
-  <% @pages.each do |page| %>
-    <tr>
-      <td><span class="glyphicon icon-chevron-right"></span> <%= link_to page.name, page %> </td>
-    </tr>
+<ul class="list-group">
+<% @pages.each do |page| %>
+
+  <li class="list-group-item"><span class="glyphicon icon-chevron-right"></span> <%= link_to page.name, page %></li>
+
   <% end %>
-  </table>
+</ul>
+
 
 <br />
  </div>

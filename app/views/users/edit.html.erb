@@ -1,3 +1,22 @@
-<h1>Upload image</h1>
+<div class="row">
+<div class="col-md-9">
 
-<%= render 'addimage' %>
+<% if current_user.present? %>
+
+   <% if params[:type] == "image" %>
+    <h3>Upload Image</h3>
+    <%= render 'addimage' %>
+   <% elsif params[:type] == "description" %>
+    <h3>Edit Profile Description</h3>
+    <%= render 'adddescription' %>
+    <% else %>
+    <h3>Edit</h3>
+    <p>-email<br>
+    -password<br>
+    -etc</p>
+  <% end %>
+
+<% end %>
+
+ </div>
+</div>

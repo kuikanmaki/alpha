@@ -1,19 +1,25 @@
 <% provide(:title, @user.name) %>
 
 <div class="row">
-  <div class="span3" style="margin-bottom:10px;">
+  <div class="col-md-3" style="margin-bottom:10px;">
         <h3>
         <%= @user.name %>
       </h3>
   </div> 
 </div> 
 <div class="row">
-  <aside class="span3">
+  <aside class="col-md-12">
     <section>
-      <%= link_to (image_tag @user.avatar.url(:thumb)), @user %><br><br>
       <% if(@user == current_user) %>
-        <%= link_to 'Add Profile Picture', edit_user_path(@user) %>
+        <%= link_to (image_tag @user.avatar.url(:medium), :size => "200x200"), edit_user_path(:id => @user.id, :type => "image") %>
+      <% else %>
+      <%= image_tag @user.avatar.url(:medium), :size => "200x200" %>
       <% end %>
+      <p><br><%= @user.description %>
+      <% if(@user == current_user) %>
+        ( <%= link_to "Edit", edit_user_path(:id => @user.id, :type => "description") %> )
+      <% end %>      
+      </p>
     </section>
     <section>
       <%= render 'shared/stats' %>
@@ -27,8 +33,14 @@
   
   </div>   
 
+<div class="row">
+  <div class="col-md-12">
+    <%= link_to "Book Tutoring", new_user_path, class: "btn btn-large btn-primary" %>
+  </div>
+</div>
+
   <div class="row">
-  <div class="span12">
+  <div class="col-md-12">
   <% if @user.interests.any? %>
     <h4>Interests</h4>
 
@@ -45,17 +57,19 @@
 </div>
 
   <div class="row">
-  <div class="span12">
+  <div class="col-md-12">
     <% if @user.notes.any? %>
       <h4>Notes</h4>
-        <%= render @notes %>
-      <%= will_paginate @notes %>
+        <div class="row">
+          <%= render @notes %>
+          <%= will_paginate @notes %>
+        </div>   
     <% end %>
   </div>
 </div>
 
 <div class="row">
-  <div class="span9">
+  <div class="col-md-9">
   <h4>Activity Feed</h4>
 
   <% @activities.each do |activity| %>

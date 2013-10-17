@@ -1,9 +1,20 @@
+if RUBY_VERSION =~ /1.9.3/
+  Encoding.default_external = Encoding::UTF_8
+  Encoding.default_internal = Encoding::UTF_8
+end
+
 source 'https://rubygems.org'
 
 ruby "1.9.3"
 
 gem 'rails', '3.2.14'
-gem 'bootstrap-sass', '2.1'
+gem 'sass-rails', '>= 3.2' # sass-rails needs to be higher than 3.2
+#gem 'bootstrap-sass', '~> 2.3.2.1'
+#gem 'bootstrap-sass', :git => "git://github.com/thomas-mcdonald/bootstrap-sass", :branch => "3"
+gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
+                          :github => 'anjlab/bootstrap-rails',
+                          :branch => '3.0.0'
+
 gem 'bcrypt-ruby', '3.0.1'
 gem 'faker', '1.0.1'
 gem 'will_paginate', '3.0.3'
@@ -13,17 +24,15 @@ gem 'thin'
 gem "paperclip", "~> 3.0"
 gem "nokogiri"
 gem "sanitize"
-gem 'sass-rails','3.2.5'
 gem 'rmagick', '2.13.2', :require => 'RMagick'
 gem "d3-rails"
 gem 'underscore-rails'
 gem 'make_voteable'
 gem 'public_activity'
-#gem 'sass-rails','3.1.4'
-
 
 gem 'bootstrap-wysihtml5-rails'
 gem "friendly_id", "~> 4.0.10"
+gem 'opentok'
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'
@@ -40,6 +49,10 @@ end
 group :assets do
   gem 'coffee-rails', '3.2.2'
   gem 'uglifier', '1.2.3'
+  gem 'less'
+  gem 'less-rails-bootstrap'
+  gem 'less-rails'  
+  gem 'therubyracer', '~> 0.10.2'
 end
 
 group :test do

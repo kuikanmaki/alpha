@@ -1,20 +1,20 @@
 <p id="notice"><%= notice %></p>
 
 <div class="row">
-  <div class="span12">
+  <div class="col-md-12">
   		<h3><%= @book.name %></h3><hr>
   		<p>By <%= @book.author %></p>
     </div>
   </div>
 
 <div class="row">
-  <div class="span9">
+  <div class="col-md-9">
   	<div class="bookholder" style="height:200px;">
   		<h5>No Reviews Yet</h5>
     </div>
   </div>
 
-  <div class="span3">
+  <div class="col-md-3">
   	<div class="bookholder">
       <span class="glyphicon icon-book"></span>
     	 <% if @pages.any? %>  

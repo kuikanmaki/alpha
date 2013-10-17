@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131001170546) do
+ActiveRecord::Schema.define(:version => 20131015095530) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -116,6 +116,14 @@ ActiveRecord::Schema.define(:version => 20131001170546) do
   add_index "relationships", ["follower_id", "followed_id"], :name => "index_relationships_on_follower_id_and_followed_id", :unique => true
   add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
 
+  create_table "rooms", :force => true do |t|
+    t.string   "name"
+    t.string   "sessionId"
+    t.boolean  "public"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
@@ -130,6 +138,7 @@ ActiveRecord::Schema.define(:version => 20131001170546) do
     t.datetime "avatar_updated_at"
     t.integer  "up_votes",            :default => 0,     :null => false
     t.integer  "down_votes",          :default => 0,     :null => false
+    t.text     "description"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

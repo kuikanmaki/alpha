@@ -1,5 +1,5 @@
 <div class="row">
-<div class="span12">
+<div class="col-md-9">
 
 <% if current_user.present? %>
 
@@ -10,10 +10,13 @@
     </h6>
     </div>
     <%= render 'adddefinition' %>
-   <% end %>
-   <% if params[:type] == "image" %>
+   <% elsif params[:type] == "image" %>
     <h3>Upload Image</h3>
-    <%= render 'addimage' %> 
+    <%= render 'addimage' %>
+    <% else %>
+    <h3>Edit</h3>
+    <h4>Add Definition (<%= @page.name %>)</h4>
+    <%= render 'adddefinition' %>
   <% end %>
 
 <% end %>
