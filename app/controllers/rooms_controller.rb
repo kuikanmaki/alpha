@@ -33,8 +33,8 @@ class RoomsController < ApplicationController
 
   private
 
-      API_KEY = "44056962"
-      API_SECRET = "935204fe269f147db7e28c3e5490260a069970d3"
+      API_KEY = "44292782"     #{}"44056962"
+      API_SECRET = "73f95090d7e500c858218e6deb67b361de396923"  #{}"935204fe269f147db7e28c3e5490260a069970d3"
 
   def config_opentok
     if @opentok.nil?
