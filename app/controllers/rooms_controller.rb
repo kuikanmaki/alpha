@@ -35,10 +35,11 @@ class RoomsController < ApplicationController
 
       API_KEY = "44056962"
       API_SECRET = "935204fe269f147db7e28c3e5490260a069970d3"
+      @api_production_url = 'https://api.opentok.com/hl'
 
   def config_opentok
     if @opentok.nil?
-      @opentok = OpenTok::OpenTokSDK.new API_KEY, API_SECRET
+      @opentok = OpenTok::OpenTokSDK.new API_KEY, API_SECRET, :api_url => @api_production_url
     end
   end
 end
