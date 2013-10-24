@@ -1,14 +1,7 @@
 <% provide(:title, @page.name) %>
 
-<div class="row" style="margin-bottom:10px;margin-top:10px;">
-<div class="col-md-2">
-     <% if current_user.present? %>
-     <%= link_to (image_tag @page.image.url(:thumb), :size => "120x120"), edit_page_path(:id => @page.id, :type => "image") %>
-     <% else %>
-     <%= image_tag @page.image.url(:thumb), :size => "120x120" %>
-     <% end %> 
-  </div>
-  <div class="col-md-7">
+<div class="row" style="margin-bottom:10px;">
+  <div class="col-md-9">
     <h3><%= @page.name %></h3>
 
     <% if @page.definition.present? %>
@@ -32,7 +25,7 @@
   <div class="col-md-2 col-md-offset-1 col-lg-offset-1" style="text-align:right">
   <% if current_user.present? && !@follower %>       
       <%= button_to 'Add to Interests', follow_page_path(@page.id), :class => "btn btn-xs btn-inverse" %>
-      <% else %>
+      <% elsif current_user.present? %>
       <%= button_to 'Unfollow', unfollow_page_path(@page.id), :class => "btn btn-xs btn-default" %>      
   <% end %>
 
@@ -47,7 +40,7 @@
 
 <% if current_user.present? %> 
   <div class="row">
-    <div class="col-md-6 col-md-offset-2">
+    <div class="col-md-6 col-md">
     <h4>Notes</h4>              
           <%= link_to "Add Notes", new_note_path(:id => @page.id), :class => "btn btn-xs btn-link" %>
           <%= link_to "Add Books", new_book_path(:id => @page.id), :class => "btn btn-xs btn-link" %>
@@ -56,16 +49,19 @@
 <% end %> 
 
 <div class="row">
-  <div class="col-md-10 col-md-offset-2"> 
+  <div class="col-md-10 col-md"> 
     <% if @notes.any? %>
       <div class="row">
         <%= render @notes %>
           <%= will_paginate @notes %>
        </div>   
     <% else %>
-      <div class="col-md-6 emptypage">
+      <div class="col-md-10 emptypage">
         <h5>No Notes yet...</h5>
           <p>Be the first one to write Notes to <%= @page.name %></p>
+<% if !current_user.present? %>  
+ <%= link_to "Sign in", signin_path %>
+<% end %>        
       </div>     
     <% end %>
     <% if @books.any? %>  
@@ -78,7 +74,7 @@
 </div>  
 
 <div class="row">
-  <div class="col-md-10 col-md-offset-2">
+  <div class="col-md-10 col-md">
     <div class="navigationbar">
 
      <% if @subpages.any? %> 
@@ -102,7 +98,7 @@
           <br><br><%= link_to "+", new_page_path(:id => @page.id, :status => "subpage"), :class => "btn btn-xs btn-default" %>
           <br><br>
       <% else %>
-      - No Related Pages -
+      <p>No Subpages<br></p>
       <% end %>
       </h5>        
     <% end %>
@@ -127,7 +123,7 @@
           <br><br><%= link_to "+", new_page_path(:id => @page.id, :status => "relatedpage"), :class => "btn btn-xs btn-default" %>
           <br><br>      
       <% else %>
-      - No Related Pages -
+      <p>No Related Pages</p>
       <% end %>
       </h5> 
     <% end %>
@@ -137,8 +133,8 @@
 
 <% if current_user.nil? %>
   <div class="row">
-    <div class="col-md-6 col-md-offset-2" style="margin-top:50px;border-style:solid;border-width:1px;padding:10px;">
-      To edit Page you have to be <%= link_to "Signed in", signin_path %>.
+    <div class="col-md-4 col-md" style="padding:10px;">
+      To edit this Page you have to be <%= link_to "Signed in", signin_path %>
     </div>
   </div>
 <% end %>      
