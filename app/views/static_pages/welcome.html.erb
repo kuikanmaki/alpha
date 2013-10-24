@@ -2,36 +2,44 @@
 
 <div class="row">
 <div class="col-md-8" style="padding-top:20px;padding-bottom:60px;">
+
           <%= image_tag "collegelogo.png" %>
 
         <form class="navbar-form" role="search" style="padding-top:40px;">
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="// Search goes here" name="srch-term" id="srch-term">
+            <input type="text" class="form-control" placeholder="// Search Notes, Subjects or Teachers (not working)" name="srch-term" id="srch-term">
             <div class="input-group-btn">
                 <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
             </div>
         </div>
+                  <p><br><a class="btn btn-default btn-sm" href="pages#index">Browse by Subject (A-Z) &raquo;</a></p>
+
         </form>
         </div>
 
 </div>
 
-<div class="row" style="padding-bottom:60px;">
-  <div class="col-md-12">
-    <h3>Note Academy is a learning reference for all the world's knowledge.</h3>
-  </div>
+
+<div class="page-header">
+  <h1>Note Academy is a learning reference for all the world's knowledge</h1>
 </div>
-  <div class="row" style="padding-bottom:60px;">
-        <div class="col-lg-4">
-          <%= image_tag "note.png", :size => "60x60" %>
-          <h3>Notes</h3>
-          <p>Learning instructions for every topic</p>
-          <p><a class="btn btn-default btn-sm" href="pages#index">Browse All Subjects (A-Z) &raquo;</a></p>
-        </div>
-        <div class="col-lg-4">
-          <%= image_tag "lecturer.png", :size => "60x60" %>          
+
+<div class="row" style="padding-bottom:60px;">
+  <div class="col-lg-6" style="padding-top:15px;">
           <h3>Are you a Teacher or a Tutor?</h3>
-          <p>Take your teaching online with Note Academy's personal teaching platform. It's quite simply the best of it's kind in the world. You choose the subjects, times, prices and students. We handle the booking, payment and video calling. You keep 90% of all the money, and never have to pay for anything. We even help you find more students (and, we hold the escrow for you in case a student doesn't show up).</p>
+          <h4><br>New! Take any 1-on-1 teaching experience online with Note Academy's personal teaching platform.</h4>
+
+            <p>When you are teaching in Note Academy, you're in control of everything: subjects, time, location, pricing - everything is 100% flexible. You even get to choose the students you want to teach.</p>
+
+            <p>We, on the other hand, handle all the boring and tedious stuff: bookings, online money transactions and video streaming. We even help you reach more students by indexing profiles to relevant topic pages. We want everything to be as smooth as possible so you get to focus on creating those great, unique learning experiences.</p>
+
+           <p>Did we already mention it's free?*</p>
           <%= link_to "Get Started", new_user_path, class: "btn btn-large btn-primary" %>
+           <p style="font-size:9px" ><br>*We charge 10% commission from the students for bookings</p>
+
+
+  </div>
+  <div class="col-lg-6">
+          <%= image_tag "imac_teacher.png" %>
   </div>
 </div>
