@@ -34,6 +34,13 @@ gem 'bootstrap-wysihtml5-rails'
 gem "friendly_id", "~> 4.0.10"
 gem 'opentok'
 
+gem 'mailboxer'
+gem 'messaging', git: 'git://github.com/frodefi/rails-messaging.git'
+gem 'haml'
+
+gem 'simple_form'
+gem 'country_select'
+
 group :development, :test do
   gem 'sqlite3', '1.3.5'
   gem 'rspec-rails', '2.11.0'

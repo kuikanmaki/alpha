@@ -1,5 +1,23 @@
 SampleApp::Application.routes.draw do
 
+  mount Messaging::Engine => "/messaging"
+
+Messaging::Engine.routes.draw do
+  resources :messages do
+    member do
+      delete 'trash'
+      post 'untrash'
+    end
+    collection do
+      delete 'trash'
+    end
+  end
+  post 'search' => 'messages#search'
+end
+
+  resources :messages
+  resources :conversations
+
   resources :books
   resources :notes
   resources :parentpages

@@ -40,32 +40,27 @@
 
 <% if current_user.present? %> 
   <div class="row">
-    <div class="col-md-6 col-md">
-    <h4>Notes</h4>              
-          <%= link_to "Add Notes", new_note_path(:id => @page.id), :class => "btn btn-xs btn-link" %>
-          <%= link_to "Add Books", new_book_path(:id => @page.id), :class => "btn btn-xs btn-link" %>
+    <div class="col-md-6 col-md">              
+          <%= link_to "Add Note", new_note_path(:id => @page.id), :class => "btn btn-xs btn-link" %>
+          <%= link_to "Add Book", new_book_path(:id => @page.id), :class => "btn btn-xs btn-link" %>
+    <h4>Notes</h4>
     </div>
   </div>
 <% end %> 
 
 <div class="row">
   <div class="col-md-10 col-md"> 
+          <%= link_to "+", new_note_path(:id => @page.id), :class => "btn btn-xs btn-default" %>
     <% if @notes.any? %>
-      <div class="row">
         <%= render @notes %>
           <%= will_paginate @notes %>
-       </div>   
     <% else %>
-      <div class="col-md-10 emptypage">
-        <h5>No Notes yet...</h5>
-          <p>Be the first one to write Notes to <%= @page.name %></p>
 <% if !current_user.present? %>  
  <%= link_to "Sign in", signin_path %>
 <% end %>        
-      </div>     
     <% end %>
     <% if @books.any? %>  
-        <h5>Books</h5>
+        <h4>Books</h4>
         <p><br> <% @books.each do |book| %>
         <span class="glyphicon icon-book"></span> <%= book.author %> - <i><%= link_to book.name, book %></i></p>
         <% end %>
@@ -78,8 +73,7 @@
     <div class="navigationbar">
 
      <% if @subpages.any? %> 
-     <h5>Subpages
-      </h5>
+     <h4>Subpages</h4>
         <table style="margin-bottom:3px;">
           <tr>
             <% @subpages.each do |subpage| %>
@@ -94,17 +88,17 @@
         <% end %>  
       <% else %> 
       <% if current_user.present? %>
-        <h5>Subpages (Add)
+        <h4>Subpages
           <br><br><%= link_to "+", new_page_path(:id => @page.id, :status => "subpage"), :class => "btn btn-xs btn-default" %>
           <br><br>
       <% else %>
       <p>No Subpages<br></p>
       <% end %>
-      </h5>        
+      </h4>        
     <% end %>
     <% if @relatedpages.any? %> 
-        <h5>Related Pages
-      </h5>    
+        <h4>Related Pages
+      </h4>    
         <table style="margin-bottom:3px;">
           <tr>
             <% @relatedpages.each do |relatedpage| %>
@@ -119,13 +113,13 @@
          <% end %>
     <% else %> 
       <% if current_user.present? %>
-        <h5>Related Pages (Add)
+        <h4>Related Pages
           <br><br><%= link_to "+", new_page_path(:id => @page.id, :status => "relatedpage"), :class => "btn btn-xs btn-default" %>
           <br><br>      
       <% else %>
       <p>No Related Pages</p>
       <% end %>
-      </h5> 
+      </h4> 
     <% end %>
     </div>  
   </div>        

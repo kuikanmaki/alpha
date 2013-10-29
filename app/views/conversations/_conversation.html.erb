@@ -1,0 +1,48 @@
+<%= div_for(conversation, :class =>"#{ 'unread ' if conversation.is_unread?(@user) }") do %>
+
+<div class="row">
+  <div class="col-md-1">
+      <%= link_to image_tag(conversation.last_sender.avatar.url(:thumb),
+                            :size => "50x50",
+                            :title => conversation.last_sender.name,
+                            :alt => conversation.last_sender.name) %>
+    </div>
+
+  <div class="col-md-2">
+
+    <header>
+      <h5>
+        <%= conversation.last_sender.name %>
+      </h5>
+        <%= time_ago_in_words(conversation.updated_at) %> ago
+    </header>
+      </div> 
+
+    <header>
+      <h5>
+      <%= link_to(truncate(conversation.subject, :length => 55), conversation_path(conversation.id,:box => @box,:page => params[:page])) %>
+      </h5>
+    </header>
+
+    <div class="col-md-8">
+      <%= raw(truncate(strip_tags(conversation.last_message.body), :length => 200)) %>
+    </div>
+
+    <% unless @box.eql?'trash' %>
+      <div class="col-md-1">
+      
+        <%= link_to(image_tag('cancel.png', :size => "16x16", :alt => 'mailboxer.delete', :title => 'mailboxer.delete'),
+                    conversation_path(conversation, :location => @box,
+                                                    :box => @box,
+                                                    :page => params[:page]),
+                                                    :confirm => 'mailboxer.delete_confirm',
+                                                                  :object => conversation.subject,
+                                                    :method => :delete,
+                                                    :remote => true) %>
+      </div>
+    <% end %>
+
+  </div>
+  <hr>
+
+<% end %>

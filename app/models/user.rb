@@ -49,6 +49,13 @@ class User < ActiveRecord::Base
     relationships.find_by_followed_id(other_user.id).destroy
   end
 
+    include Mailboxer::Models::Messageable
+  acts_as_messageable
+
+  def mailboxer_email(message)
+    email
+  end
+
   private
 
     def create_remember_token

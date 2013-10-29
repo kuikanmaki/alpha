@@ -1,4 +1,5 @@
 @import "bootstrap";
+@import "twitter/bootstrap";
 
 /* mixins, variables, etc. */
 
@@ -68,7 +69,7 @@ p {
 
 /* navbar */
 .navbar-default {
-    background-color: #FFFFFF;
+    background-color: #F8F8F8;
     border-color: #E7E7E7;
 }
 /* title */

@@ -38,4 +38,13 @@ SampleApp::Application.configure do
     # Added this myself, for the Paperclip gem
   Paperclip.options[:command_path] = "/usr/local/bin/"
 
+  # Add the fonts path
+  config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+
+  # Precompile additional assets
+  config.assets.precompile += %w( .svg .eot .woff .ttf )
+
+  #rails-messaging gem setting for development
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
 end
