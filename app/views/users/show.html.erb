@@ -33,14 +33,16 @@
   
   </div>   
 
-<div class="row">
-  <div class="col-md-12">
-    <%= link_to "Send Message", new_message_path(:id => @user.id), :class => "btn btn-large btn-primary" %>    
+<% unless(@user == current_user) %>
+  <div class="row">
+    <div class="col-md-8">
+      <%= link_to "Send Message", new_message_path(:id => @user.id), :class => "btn btn-large btn-primary" %>    
+    </div>
   </div>
-</div>
+<% end %>
 
   <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-8">
   <% if @user.interests.any? %>
     <h4>Interests</h4>
 
@@ -57,7 +59,7 @@
 </div>
 
   <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-8">
     <% if @user.notes.any? %>
       <h4>Notes</h4>
         <div class="row">

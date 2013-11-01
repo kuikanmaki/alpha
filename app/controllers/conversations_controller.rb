@@ -13,6 +13,7 @@ class ConversationsController < ApplicationController
   end
 
     def show
+
     if @box.eql? 'trash'
       @receipts = @mailbox.receipts_for(@conversation).trash
     else

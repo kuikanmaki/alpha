@@ -5,13 +5,13 @@
                             :size => "30x30",
                             :title => message.sender.name,
                             :alt => message.sender.name),
-                   message.sender.name %>
+                   message.sender %>
 
     </div>
 
     <div class="media-heading name">
       <div class="name">
-      <%= link_to message.sender.name, message.sender.name %>
+      <%= link_to message.sender.name, message.sender %>
       </div>
       <div class="date">
         <%= time_ago_in_words(message.updated_at) %> ago

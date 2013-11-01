@@ -21,7 +21,7 @@
   # GET /messages/new
   # GET /messages/new.xml
   def new
-
+ @recipient = User.find_by_id(params[:id])
   end
 
   # GET /messages/1/edit
@@ -38,10 +38,7 @@
     if (@receipt.errors.blank?)
       @receipt.save
       @conversation = @receipt.conversation
-      flash[:success]= 'mailboxer.sent'
-      redirect_to @conversation, notice: 'Message sent.' 
-      #render :action => :new
-      #redirect_to conversation_path(@conversation)
+      redirect_to @conversation, :flash => { :success => "Message sent." }
     else
       render :action => :new
     end 

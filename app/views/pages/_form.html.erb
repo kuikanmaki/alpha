@@ -14,8 +14,7 @@
  <% if @status == "relatedpage" %>  
  
    <div class="alert alert-info">
-     <h6><span class="glyphicon icon-info-sign"></span> Related Page can be any other page that is related to this page, but not fully included by it.
-     For example: if the page is "Cognitive Science", a related page might be "Anthropology".</h6><%= image_tag "relatedpageicon.gif" %> 
+     <%= image_tag "relatedpageicon.gif" %> 
    </div>
 
   <hr>
@@ -23,15 +22,14 @@
  <% elsif @status == "subpage" %>  
 
       <div class="alert alert-info">
-        <h6><span class="glyphicon icon-info-sign"></span> Subpage is a more specific page that is fully included by it's parent.
-        For example: if the page is "Chemistry", a subpage might be "Organic Chemistry".</h6><%= image_tag "subpageicon.gif" %> 
+        <%= image_tag "subpageicon.gif" %> 
       </div>
     <hr>
 
  <% else %>
 
       <div class="alert alert-info">
-        <h6><span class="glyphicon icon-info-sign"></span> New Page can be created for any topic that could be taught at a university level. The Page name should be clear and neutral. Words in the name should be capitalized, except for articles, conjunctions, and prepositions less than five letters. For example: "Physics", "Economic History" or "Geomorphology of the Grand Canyon" are all correct. </h6><%= image_tag "newpageicon.gif" %>
+        <%= image_tag "newpageicon.gif" %>
       </div>
     <hr>
 
