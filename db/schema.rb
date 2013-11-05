@@ -129,15 +129,15 @@ ActiveRecord::Schema.define(:version => 20131028110127) do
   add_index "microposts", ["user_id", "created_at"], :name => "index_microposts_on_user_id_and_created_at"
 
   create_table "notes", :force => true do |t|
-    t.text     "content",    :limit => 255
+    t.text     "content"
     t.integer  "user_id"
     t.integer  "page_id"
-    t.datetime "created_at",                               :null => false
-    t.datetime "updated_at",                               :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
     t.string   "notetype"
     t.string   "title"
-    t.integer  "up_votes",                  :default => 0, :null => false
-    t.integer  "down_votes",                :default => 0, :null => false
+    t.integer  "up_votes",   :default => 0, :null => false
+    t.integer  "down_votes", :default => 0, :null => false
   end
 
   add_index "notes", ["page_id", "created_at"], :name => "index_notes_on_page_id_and_created_at"
