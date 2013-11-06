@@ -5,7 +5,7 @@
 #   gem 'sqlite3'
 development:
   adapter: postgresql
-  encoding: utf8
+  encoding: unicode
   database: project_development
   #database: db/development.sqlite3
   pool: 5
@@ -19,7 +19,7 @@ development:
 # Do not set this db to the same as development or production.
 test: &test
   adapter: postgresql
-  encoding: utf8
+  encoding: unicode
   database: project_test
   pool: 5
   timeout: 5000
@@ -29,8 +29,9 @@ test: &test
 
 production:
   adapter: postgresql
-  encoding: utf8
+  encoding: unicode
   database: project_production
+  username: noteacademy
   pool: 5
   timeout: 5000
 
