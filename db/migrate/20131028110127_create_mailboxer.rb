@@ -37,7 +37,7 @@ class CreateMailboxer < ActiveRecord::Migration
     
     
   #Indexes
-  	#Conversations
+  	#Conversations#
   	#Receipts
   	add_index "mailboxer_receipts","notification_id"
 
