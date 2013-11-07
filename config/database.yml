@@ -5,7 +5,7 @@
 #   gem 'sqlite3'
 development:
   adapter: postgresql
-  encoding: unicode
+  encoding: utf-8
   database: project_development
   #database: db/development.sqlite3
   pool: 5
