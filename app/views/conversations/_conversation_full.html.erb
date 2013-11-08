@@ -54,6 +54,8 @@
       <% conversation.recipients.each do |recp| %>
         <%= link_to image_tag(recp.avatar.url(:thumb), :title=>recp.name, :alt => recp.name), recp if recp.id != current_user.id %>
       <% end %>
+      <br><br>
+      <%= link_to "Video Call", "../party/1", :class => "btn btn-large btn-primary" %>    
     </div>
   </div>
 </div>
