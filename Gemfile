@@ -41,6 +41,12 @@ gem 'haml'
 gem 'simple_form'
 gem 'country_select'
 
+  gem 'less'
+  gem 'less-rails-bootstrap'
+  gem 'less-rails' 
+  gem 'coffee-rails', '3.2.2'
+ 
+
 group :development, :test do
   gem 'pg', '0.12.2'
   #gem 'sqlite3', '1.3.5' #
@@ -55,11 +61,7 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'coffee-rails', '3.2.2'
   gem 'uglifier', '1.2.3'
-  gem 'less'
-  gem 'less-rails-bootstrap'
-  gem 'less-rails'  
   gem 'therubyracer', '~> 0.10.2'
 end
 
