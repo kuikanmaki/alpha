@@ -41,9 +41,7 @@ gem 'haml'
 gem 'simple_form'
 gem 'country_select'
 
-  gem 'less'
-  gem 'less-rails-bootstrap'
-  gem 'less-rails' 
+
   gem 'coffee-rails', '3.2.2'
  
 
@@ -77,4 +75,7 @@ end
 
 group :production do
   gem 'pg', '0.12.2'
+    gem 'less'
+  gem 'less-rails-bootstrap'
+  gem 'less-rails' 
 end
