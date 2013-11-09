@@ -69,5 +69,8 @@ module SampleApp
 
     #Precompile Javascript for OpenTok video API
     config.assets.precompile += %w(TB.min.js)
+
+    #Fixing CSS Less on Heroku
+    config.assets.initialize_on_precompile = false
   end
 end

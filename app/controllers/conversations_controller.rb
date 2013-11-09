@@ -12,7 +12,7 @@ class ConversationsController < ApplicationController
     end
   end
 
-    def show #
+    def show
 
     if @box.eql? 'trash'
       @receipts = @mailbox.receipts_for(@conversation).trash
@@ -88,7 +88,7 @@ class ConversationsController < ApplicationController
     @conversation = Conversation.find_by_id(params[:id])
 
     if @conversation.nil? or !@conversation.is_participant?(@user)
-      #redirect_to conversations_path(:box => @box)
+      ##redirect_to conversations_path(:box => @box)
       puts "can't find this conversation"
     return
     end
