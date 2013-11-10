@@ -4,7 +4,7 @@ class Page  < ActiveRecord::Base
   has_many :users, through: :interests
   has_and_belongs_to_many :books
   validates :name, :presence => true, length: { maximum: 100 }
-  attr_accessible :name, :parent, :definition, :image, :image_file_name
+  attr_accessible :name, :parent, :definition, :image, :coverimage, :image_file_name
   extend FriendlyId
   friendly_id :name, use: :slugged
   has_attached_file :image, 
@@ -13,6 +13,9 @@ class Page  < ActiveRecord::Base
                                            :default_url => "default/noisygrid.png",
                                            :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
                                            :url => "/system/:attachment/:id/:style/:filename"
+  has_attached_file :coverimage,  
+                                           :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
+                                           :url => "/system/:attachment/:id/:style/:filename"                                         
   #validates_attachment_presence :image
   default_scope :order => 'name ASC'
   has_and_belongs_to_many :parentpages, 

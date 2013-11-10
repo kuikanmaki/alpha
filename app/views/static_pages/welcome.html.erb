@@ -1,34 +1,153 @@
 <% provide(:title, 'Welcome') %>
 
-<div class="row">
-  <div class="col-md-1" style="padding-top:20px;">
-     <%= image_tag "collegelogo.png", :size => "60x60" %>
-  </div>
-  <div class="col-md-1" style="padding-top:20px;">
-    <p><br><a class="btn btn-default btn-sm" href="pages#index">Browse by Subject (A-Z) &raquo;</a></p>
-  </div>
-</div>
+<div class="container-full" style="background: url('assets/athens-large.jpg');background-size:100%;background-repeat:no-repeat;background-position:center;height:600px;">
 
-<div class="page-header">
-  <h1>Note Academy is a learning reference for all the world's knowledge</h1>
-</div>
+    <!-- Image Slider -->
+    <section class="wrapper-lg bg-slider">
+       <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-lg-8 col-lg-offset-2">
+            <br class="spacer-dxl">
+            <div class="form-group carousel-title">
+              <label> What would you like to learn today? Try Computational Neuroscience, Bitcoin or Cultural Anthropology</label>
+              <input id="search" class="form-control" type="text" placeholder="Enter email"></input></div>
+          </div>
+        </div>
+      </div> 
+    </section>
 
-<div class="row" style="padding-bottom:60px;">
-  <div class="col-lg-6" style="padding-top:15px;">
-          <h3>Are you a Teacher or a Tutor?</h3>
-          <h4><br>New! Take any 1-on-1 teaching experience online with Note Academy's personal teaching platform.</h4>
+</div> 
 
-            <p>When you are teaching in Note Academy, you're in control of everything: subjects, time, location, pricing - everything is 100% flexible. You even get to choose the students you want to teach.</p>
+    <!-- Call To Action -->
+    <section class="wrapper-sm bg-secondary">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h3>Note Academy is the world's collaborative global campus.</h3>
+            <p>A place to find and share the best learning resources and ideas as well as personal mentors to guide you along the way.</p>
+            <p>The missing crowdsourced curriculum to world's knowledge</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            <p>We, on the other hand, handle all the boring and tedious stuff: bookings, payment transactions and video streaming. We want everything to be as smooth as possible so you get to focus on creating those great, unique learning experiences.</p>
+    <section class="wrapper-md">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6 col-md-3">
+            <h3><i class="icon icon-file"></i> Notes</h3>
+            <p>Best way to find and share curricula</p>
+            <p>And purely one near this hey therefore darn firefly had ducked overpaid wow irrespective some tearful and mandrill yikes considering far above. Physically less snickered much and and while</p>
+            <a class="btn btn-default" href="#"><i class="icon  icon-info-sign"></i> where more partook</a>
+            <br class="spacer-md">
+          </div>
+          <div class="col-sm-6 col-md-3">
+            <h3><i class="icon icon-book"></i> Resources</h3>
+            <p> Books MOOCS shits and giggles</p>
+            <p>Purely one near this hey therefore darn firefly had ducked overpaid wow irrespective some tearful and mandrill yikes considering far above. Physically less</p>
+            <a class="btn btn-default" href="#"><i class="icon  icon-info-sign"></i> where more partook &raquo;</a>
+            <br class="spacer-md">
+          </div>
+          <div class="col-sm-6 col-md-3">
+            <h3><i class="icon icon-user"></i> Mentors</h3>
+            <p>Mentors are like tutors, we just fancied a better name!</p>
+            <p>One near this hey therefore darn firefly had ducked overpaid wow irrespective some tearful and mandrill yikes considering far above. Physically less snickered much and</p>
+            <a class="btn btn-default" href="#"><i class="icon  icon-info-sign"></i> where more partook &raquo;</a>
+            <br class="spacer-md">
+          </div>
+           <div class="col-sm-6 col-md-3">
+            <h3><i class="icon icon-globe"></i> Share and Contribute</h3>
+            <p>Share what you know with others and join the online education revolution!</p>
+            <p>Near this hey therefore darn firefly had ducked overpaid wow irrespective some tearful and mandrill yikes considering far above. Physically less snickered much and and while</p>
+            <a class="btn btn-default" href="#"><i class="icon  icon-info-sign"></i> where more partook &raquo;</a>
+            <br class="spacer-md">
+          </div>
+        </div>
+      </div>
+    </section>
 
-           <p>Did we already mention it's free?*<br><br></p>
-          <%= link_to "Get Started", new_user_path, class: "btn btn-large btn-primary" %>
-           <p style="font-size:9px" ><br>*We charge 10% commission from the students for bookings</p>
+    <section class="wrapper-lg bg-alt">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h3>Future of online learning: An on-demand education tailored to every student</h3>
+            <h4><i class="icon icon-bullhorn"></i> Register your account know; share your expertise and get hired to mentor! </h4>
+            <a href="#" class="btn btn-lg btn-primary">Create free account &raquo;</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-
-  </div>
-  <div class="col-lg-6">
-          <%= image_tag "imac_teacher.png" %>
-  </div>
-</div>
+    <!--testimonials-->
+    <section class="wrapper-lg">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="panel panel-default" >
+                  <!-- Default panel contents -->
+                 <div class="panel-heading">Trending topics</div>
+                <div class="panel-body">
+                   <p>These are some of the most active topics at the moment, and have the greates amount of activity in the past day</p>
+                </div>
+          
+                 <!-- List group -->
+               <ul class="list-group">
+                   <li class="list-group-item">English</li>
+                   <li class="list-group-item">Computer Science</li>
+                   <li class="list-group-item">Metaethics</li>
+                   <li class="list-group-item">Javascript</li>
+                   <li class="list-group-item">Linear Algebra</li>
+               </ul>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="panel panel-default" >
+                  <!-- Default panel contents -->
+                 <div class="panel-heading">Most popular topics</div>
+                <div class="panel-body">
+                   <p>These are the most actively searched for topics on Note Academy</p>
+                </div>
+          
+                 <!-- List group -->
+               <ul class="list-group">
+                   <li class="list-group-item">English</li>
+                   <li class="list-group-item">Computer Science</li>
+                   <li class="list-group-item">Metaethics</li>
+                   <li class="list-group-item">Javascript</li>
+                   <li class="list-group-item">Linear Algebra</li>
+               </ul>
+                  </div>
+              </div>
+              <div class="col-md-4">
+                <div class="well">
+                  <h3>Meet some of our mentors:</h3>
+                  <br class="spacer-sm"
+                  <ul class="media-list">
+                  <li class="media">
+                    <a class="pull-left" href="#">
+                      <img class="media-object avatar" src="assets/img/user-1.png">
+                    </a>
+                    <div class="media-body">
+                      <h4 class="media-heading"><a href="#">L. Algebra</a></h4>
+                      <p>"These guys are friendly and down to earth. I would definitely recommend for anyone looking for a solid host for their sites. I'd recommend them to anyone!"</p>
+                    </div><!-- /.media-body -->
+                  </li>
+                  <li class="media">
+                    <a class="pull-left" href="#">
+                      <img class="media-object avatar" src="assets/img/user-2.png">
+                    </a>
+                    <div class="media-body">
+                      <h4 class="media-heading"><a href="#">C. Science</a></h4>
+                      <p>"I've ever had downtime since the switch. These guys are friendly and down to earth. I would definitely recommend for anyone looking for a solid host for their sites."</p>
+                    </div>
+                  </li>
+                </ul>
+                </div>
+              </div><!--/.col-lg-4 -->
+            </div><!-- /.row -->
+          </div><!-- /.col-lg-12 -->
+        </div><!-- /.row -->
+      </div><!-- /.container -->
+    </section>

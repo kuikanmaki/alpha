@@ -8,12 +8,7 @@ source 'https://rubygems.org'
 ruby "1.9.3"
 
 gem 'rails', '3.2.14'
-gem 'sass-rails', '>= 3.2' # sass-rails needs to be higher than 3.2
-#gem 'bootstrap-sass', '~> 2.3.2.1'
-#gem 'bootstrap-sass', :git => "git://github.com/thomas-mcdonald/bootstrap-sass", :branch => "3"
-gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
-                          :github => 'anjlab/bootstrap-rails',
-                          :branch => '3.0.0'
+
 
 gem 'bcrypt-ruby', '3.0.1'
 gem 'faker', '1.0.1'
@@ -40,6 +35,13 @@ gem 'haml'
 
 gem 'simple_form'
 gem 'country_select'
+
+gem 'sass-rails', '>= 3.2'
+gem 'bootstrap-sass', '~> 3.0.2.0'
+
+#gem 'less'
+#gem 'less-rails-bootstrap'
+#gem 'less-rails' 
 
 
   gem 'coffee-rails', '3.2.2'
@@ -75,7 +77,4 @@ end
 
 group :production do
   gem 'pg', '0.12.2'
-    gem 'less'
-  gem 'less-rails-bootstrap'
-  gem 'less-rails' 
 end

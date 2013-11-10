@@ -4,6 +4,8 @@
     <title><%= full_title(yield(:title)) %></title>
     <%= stylesheet_link_tag    "application", media: "all" %>
     <%= stylesheet_link_tag 'application', '//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700' %>
+    <%= stylesheet_link_tag 'application', '//fonts.googleapis.com/css?family=Raleway:400,700,600' %>
+
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
     <%= render 'layouts/shim' %>
@@ -11,13 +13,11 @@
   <body>
     <%= yield(:head) %>
     <%= render 'layouts/header' %>
-    <div class="container">
       <% flash.each do |key, value| %>
         <%= content_tag(:div, value, class: "alert alert-#{key}") %>
       <% end %>
       <%= yield %>
       <%= render 'layouts/footer' %>
       <%= debug(params) if Rails.env.development? %>
-    </div>
   </body>
 </html>
