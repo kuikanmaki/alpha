@@ -36,7 +36,7 @@ gem 'haml'
 gem 'simple_form'
 gem 'country_select'
 
-gem 'sass-rails', '>= 3.2'
+gem 'sass-rails', '>= 3.1.4'
 gem 'bootstrap-sass', '~> 3.0.2.0'
 
 gem 'aws-sdk'
