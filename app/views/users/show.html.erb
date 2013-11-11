@@ -1,78 +1,58 @@
 <% provide(:title, @user.name) %>
+
+<div class="container-full" style="bg-color:#888;height:260px;">
+  <div class="container">
+  <div class="row">
+    <div class="col-md-12" style="padding-top:20px;">
+      <div class="teacher-profile-bg">
+        <table cellpadding="10">
+          <tr>
+            <td>
+              <% if(@user == current_user) %>
+                <%= link_to (image_tag @user.avatar.url(:medium), :size => "140x140", class: "avatar-nav"), edit_user_path(:id => @user.id, :type => "image") %>
+              <% else %>
+                <%= image_tag @user.avatar.url(:medium), :size => "140x140", class: "avatar-nav" %>
+              <% end %>  
+            </td>
+            <td>
+              <h3><%= @user.name %></h3>
+              <%= @user.description %>
+              <% if(@user == current_user) %>
+                ( <%= link_to "Edit", edit_user_path(:id => @user.id, :type => "description") %> )
+              <% end %>   
+              <% if @user.interests.any? %>
+
+                  <table style="margin-top:20px;margin-bottom:20px;">
+                    <tr>
+                    <% @interests.each do |interest| %> 
+                      <td><span class="glyphicon icon-ok"></span> <%= link_to interest.name, "../pages/#{interest.id}" %> </td>
+                    </tr>
+                    <% end %>
+                  </table>
+
+                <% end %>
+
+                <% unless(@user == current_user) %>
+              <div class="row">
+                <div class="col-md-8">
+                  <%= link_to "Send Message", new_message_path(:id => @user.id), :class => "btn btn-large btn-primary" %> 
+                  <%= link_to "Video Call", "../party/1", :class => "btn btn-large btn-primary" %>   
+                </div>
+              </div>
+            <% end %>                      
+            </td>
+          </tr>
+        </table>    
+      </div>   
+    </div>   
+  </div>   
+</div>   
+
   <div class="container">
 
 <div class="row">
-  <div class="col-md-3" style="margin-bottom:10px;">
-        <h3>
-        <%= @user.name %>
-      </h3>
-  </div> 
-</div> 
-<div class="row">
-  <aside class="col-md-12">
-    <section>
-      <% if(@user == current_user) %>
-        <%= link_to (image_tag @user.avatar.url(:medium), :size => "200x200"), edit_user_path(:id => @user.id, :type => "image") %>
-      <% else %>
-      <%= image_tag @user.avatar.url(:medium), :size => "200x200" %>
-      <% end %>
-      <p><br><%= @user.description %>
-      <% if(@user == current_user) %>
-        ( <%= link_to "Edit", edit_user_path(:id => @user.id, :type => "description") %> )
-      <% end %>      
-      </p>
-    </section>
-    <section>
-      <%= render 'shared/stats' %>
-    </section>
-
-    <section>
-      <%= render 'follow_form' if signed_in? %>
-    </section>
-
-  </aside>
-  
-  </div>   
-
-<% unless(@user == current_user) %>
-  <div class="row">
-    <div class="col-md-8">
-      <%= link_to "Send Message", new_message_path(:id => @user.id), :class => "btn btn-large btn-primary" %>    
-    </div>
-  </div>
-<% end %>
-
-  <div class="row">
-  <div class="col-md-8">
-  <% if @user.interests.any? %>
-    <h4>Interests</h4>
-
-    <table style="margin-top:20px;margin-bottom:20px;">
-      <tr>
-      <% @interests.each do |interest| %> 
-        <td><span class="glyphicon icon-ok"></span> <%= link_to interest.name, "../pages/#{interest.id}" %> </td>
-      </tr>
-      <% end %>
-    </table>
-
-  <% end %>
-  </div>
-</div>
-
-  <div class="row">
-  <div class="col-md-8">
-    <% if @user.notes.any? %>
-      <h4>Notes</h4>
-        <div class="row">
-          <%= render @notes %>
-          <%= will_paginate @notes %>
-        </div>   
-    <% end %>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-md-9">
+  <div class="col-md-8" style="padding-top:20px;">
+  <br><br>
   <h4>Activity Feed</h4>
 
   <% @activities.each do |activity| %>

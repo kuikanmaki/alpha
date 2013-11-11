@@ -57,6 +57,12 @@ before_filter :require_login, :except => [:show, :index]
     end
   end
 
+  def shownotes
+    respond_to do |format|               
+      format.js
+    end        
+  end 
+
   # GET /pages/new
   # GET /pages/new.json
   def new
@@ -182,6 +188,10 @@ before_filter :require_login, :except => [:show, :index]
       format.json { head :no_content }
     end
   end
+
+  def shownotes
+  render :layout => false
+end
 
 private
 

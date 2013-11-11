@@ -210,7 +210,6 @@ aside {
     }
     &:hover {
       text-decoration: none;
-      color: $blue;
     }
   }
   strong {
@@ -335,9 +334,19 @@ background:#CCCCCC;
 }
 
 .notesprofile {
-  border-bottom: 1px solid $grayLighter;
-  margin-top: 10px;
-  margin-bottom: 20px;
+  height:80px;
+  border: 1px solid $grayLighter;
+    border-radius: 2px 2px 2px 2px;
+  -moz-border-radius: 2px 2px 2px 2px;
+  -webkit-border-radius: 2px 2px 2px 2px;
+  border: 0px solid #000000;
+
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.6);
+  -moz-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.6);
+  box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.6);
+
+  background-color:rgba(254, 254, 254, 0.95);
+  padding:7px;
 }
 
 .notes {
@@ -451,7 +460,6 @@ width: 30px;
 }
 
 #videobox {
-  border: 1px solid $grayLighter;
   width: 100%;
   height: 100%;
 
@@ -463,7 +471,6 @@ width: 30px;
 }
 
 #videobox2 {
-  border: 1px solid $grayLighter;
   width: 100%;
   height: 100%;
 
@@ -507,4 +514,86 @@ width: 30px;
   background-color:rgba(254, 254, 254, 0.95);
   padding:7px;
   font-family: 'Raleway', sans-serif;
+}
+
+#page-nav ul{
+  list-style: none;
+}
+
+#page-nav li{
+  display: inline;
+}
+
+
+
+
+.teacher-profile-bg{
+  border-radius: 2px 2px 2px 2px;
+  -moz-border-radius: 2px 2px 2px 2px;
+  -webkit-border-radius: 2px 2px 2px 2px;
+  border: 0px solid #000000;
+
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.6);
+  -moz-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.6);
+  box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.6);
+
+  background-color:rgba(254, 254, 254, 0.95);
+  font-family: 'Raleway', sans-serif;
+}
+
+.video-chat-bg{
+  border-radius: 2px 2px 2px 2px;
+  -moz-border-radius: 2px 2px 2px 2px;
+  -webkit-border-radius: 2px 2px 2px 2px;
+  border: 0px solid #000000;
+
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.6);
+  -moz-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.6);
+  box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.6);
+
+  background-color:rgba(254, 254, 254, 0.95);
+  font-family: 'Raleway', sans-serif;
+  min-height:640px;
+
+  margin-top:20px;
+}
+
+#page-navigation{
+  ul
+  { 
+  text-shadow: 0px 1px 23px rgba(0, 0, 0, 0.5);
+  background-color: #000000;  
+  text-align: center;
+   color:  white;
+  list-style-type:none;
+  margin:0;
+  } 
+
+  a
+  {
+  font-family: 'Raleway', sans-serif;
+  text-decoration: none;
+  color:  #eeeeee;  
+  display:  block;
+  padding: 30px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  }
+
+  li
+  {
+  background-color:rgba(0,0,0,0.115);  
+  float:left;
+  border-style: solid;
+  border-top-width: 5px;
+  border-left-width: 5px;
+  border-bottom-width: 5px;
+  border-right-width: 5px;
+
+  margin-left: -5px;
+  }
+
+  li:hover{
+    background-color:rgba(0,0,0,0.3);
+  }
 }

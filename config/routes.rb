@@ -39,6 +39,7 @@ end
     member do
       post :follow
       post :unfollow
+      get :shownotes
     end
   end
 
