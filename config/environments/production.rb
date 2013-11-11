@@ -70,6 +70,7 @@ SampleApp::Application.configure do
 
   # Precompile additional assets
   config.assets.precompile += %w( .svg .eot .woff .ttf )
+  config.assets.precompile = %w{application.js}
 
   # AWS / Paperclip image handling
   config.paperclip_defaults = {
