@@ -19,8 +19,13 @@ class User < ActiveRecord::Base
                                            :thumb => "100x100>" }, 
                                            :default_url => "default/userprofile.png",
                                            :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
-                                           :url => "/system/:attachment/:id/:style/:filename"
-
+                                           :url => "/system/:attachment/:id/:style/:filename",
+                                           :storage => :s3,
+                                           :s3_credentials => {:bucket => ENV['AWS_BUCKET'],
+                                           :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+                                           :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']},
+                                           :s3_protocol => "https",
+                                           :s3_host_name => "s3-eu-west-1.amazonaws.com" 
   before_save { email.downcase! }
   #before_save :create_remember_token
   before_create :create_remember_token
