@@ -1,6 +1,6 @@
 <% provide(:title, @user.name) %>
 
-<div class="container-full" style="bg-color:#888;height:240px;">
+<div class="container-full" style="background: url('assets/thames.jpg');background-size:100%;background-repeat:no-repeat;background-position:center;;height:240px;">
   <div class="container">
   <div class="row">
     <div class="col-md-12" style="padding-top:20px;">
@@ -25,7 +25,7 @@
                   <table style="margin-top:20px;margin-bottom:20px;">
                     <tr>
                     <% @interests.each do |interest| %> 
-                      <td><span class="glyphicon icon-ok"></span> <%= link_to interest.name, "../pages/#{interest.id}" %> </td>
+                      <td> <%= link_to interest.name, "../pages/#{interest.id}" %> </td>
                     </tr>
                     <% end %>
                   </table>
@@ -35,7 +35,7 @@
                 <% unless(@user == current_user) %>
               <div class="row">
                 <div class="col-md-8">
-                  <%= link_to "Send Message", new_message_path(:id => @user.id), :class => "btn btn-large btn-primary" %> 
+                  <%= link_to "Send Message", new_message_path(:id => @user.id), :class => "btn btn-large btn-primary" %> <br>
                   <%= link_to "Video Call", "../party/1", :class => "btn btn-large btn-primary" %>   
                 </div>
               </div>
@@ -51,9 +51,9 @@
   <div class="container">
 
 <div class="row">
-  <div class="col-md-8" style="padding-top:20px;">
+  <div class="col-md-8" style="padding-top:30px;">
   <br><br>
-  <h4>Activity Feed</h4>
+  <h3>Activity Feed</h3>
 
   <% @activities.each do |activity| %>
     <div class="activity">
