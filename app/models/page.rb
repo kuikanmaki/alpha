@@ -15,7 +15,13 @@ class Page  < ActiveRecord::Base
                                            :url => "/system/:attachment/:id/:style/:filename"
   has_attached_file :coverimage,  
                                            :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
-                                           :url => "/system/:attachment/:id/:style/:filename"                                         
+                                           :url => "/system/:attachment/:id/:style/:filename", 
+                                           :storage => :s3,
+                                           :s3_credentials => {:bucket => ENV['AWS_BUCKET'],
+                                           :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+                                           :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']},
+                                           :s3_protocol => "https",
+                                           :s3_host_name => "s3-eu-west-1.amazonaws.com"                                                                                 
   #validates_attachment_presence :image
   default_scope :order => 'name ASC'
   has_and_belongs_to_many :parentpages, 

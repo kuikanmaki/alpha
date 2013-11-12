@@ -72,27 +72,4 @@ SampleApp::Application.configure do
   config.assets.precompile += %w( .svg .eot .woff .ttf )
   config.assets.precompile = %w{application.js}
 
-
-
-  # AWS / Paperclip image handling
-#  config.paperclip_defaults = {
-#    :storage => :s3,
-#    :s3_protocol => 'http',
-#    :s3_credentials => {    
-#    :bucket => ENV['AWS_BUCKET'],
-#    :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-#    :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
-#  }
-#}
-
-config.paperclip_defaults = {
-:storage => :s3,
-  :s3_credentials => {
-    :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-    :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
-  },
-  :bucket => ENV['AWS_BUCKET'],
-  :path => ":attachment/:id"
-}
-
 end
