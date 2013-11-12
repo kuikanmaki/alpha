@@ -2,13 +2,17 @@
 
 <% javascript 'yui-min.js' %>
 
+<% if @page.coverimage.present? %>
 <div class="container-full" style="background: url(<%= @page.coverimage.url %>);background-size:100%;background-repeat:no-repeat;background-position:center;">
+    <% else %>  
+<div class="container-full" style="bk-color:gray;background-size:100%;background-repeat:no-repeat;background-position:center;">
+    <% end %>  
   <div class="container">
     <div class="row" >
       <div class="col-md-12">
         <div style="margin-top:200px;margin-bottom:30px;height:120px;width:100%;">
 
-          <h1><%= @page.name %></h1>
+          <h1 id="page-title"><%= @page.name %></h1>
 
           <div style="float:right; width:auto;">
             <% if current_user.present? && !@follower %>       
