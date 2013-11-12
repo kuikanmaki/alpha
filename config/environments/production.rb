@@ -76,8 +76,8 @@ SampleApp::Application.configure do
   config.paperclip_defaults = {
     :storage => :s3,
     :s3_protocol => 'http',
-    :bucket => ENV['noteacademy'],
     :s3_credentials => {    
+    :bucket => ENV['noteacademy'],
     :access_key_id => ENV['AKIAJ3OLIU3QUACYXLTQ'],
     :secret_access_key => ENV['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']
   }
