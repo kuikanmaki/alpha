@@ -77,9 +77,9 @@ SampleApp::Application.configure do
     :storage => :s3,
     :s3_protocol => 'http',
     :s3_credentials => {    
-    :bucket => ENV['noteacademy'],
-    :access_key_id => ENV['AKIAJ3OLIU3QUACYXLTQ'],
-    :secret_access_key => ENV['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']
+    :bucket => ENV['AWS_BUCKET'],
+    :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+    :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
   }
 }
 
