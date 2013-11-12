@@ -72,16 +72,7 @@ SampleApp::Application.configure do
   config.assets.precompile += %w( .svg .eot .woff .ttf )
   config.assets.precompile = %w{application.js}
 
-Paperclip::Attachment.default_options.merge!({
-    storage: :s3,
-    s3_credentials: {
-        access_key_id: ENV['S3_KEY'],
-        secret_access_key: ENV['S3_SECRET'],
-        bucket: "#{ENV['S3_BUCKET']}-#{Rails.env}"
-        },
-    url: ":s3_domain_url",
-    path: "/:class/:attachment/:id_partition/:style/:filename"
-    })
+
 
   # AWS / Paperclip image handling
 #  config.paperclip_defaults = {
@@ -93,5 +84,15 @@ Paperclip::Attachment.default_options.merge!({
 #    :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
 #  }
 #}
+
+config.paperclip_defaults = {
+:storage => :s3,
+  :s3_credentials => {
+    :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+    :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+  },
+  :bucket => ENV['AWS_BUCKET'],
+  :path => ":attachment/:id"
+}
 
 end
