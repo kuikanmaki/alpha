@@ -4,7 +4,7 @@ class Page  < ActiveRecord::Base
   has_many :users, through: :interests
   has_and_belongs_to_many :books
   validates :name, :presence => true, length: { maximum: 100 }
-  attr_accessible :name, :parent, :definition, :image, :coverimage, :image_file_name
+  attr_accessible :name, :parent, :definition, :image, :coverimage, :coverimage_file_name, :image_file_name
   extend FriendlyId
   friendly_id :name, use: :slugged
   has_attached_file :image, 
