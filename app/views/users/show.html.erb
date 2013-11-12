@@ -33,7 +33,8 @@
                 <% end %>
 
                 <% unless(@user == current_user) %>
-                  <%= link_to "Send Message", new_message_path(:id => @user.id), :class => "btn btn-large btn-primary" %><br><br><br> 
+                  <br><br>
+                  <%= link_to "Send Message", new_message_path(:id => @user.id), :class => "btn btn-large btn-primary" %><br><br> 
                   <%= link_to "Video Call", "../party/1", :class => "btn btn-large btn-primary" %>   
                 <% end %>                      
             </td>
