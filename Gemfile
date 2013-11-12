@@ -7,7 +7,7 @@ source 'https://rubygems.org'
 
 ruby "1.9.3"
 
-gem 'rails', '3.2.14'
+gem 'rails', '3.2.15'
 
 
 gem 'bcrypt-ruby', '3.0.1'

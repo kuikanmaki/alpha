@@ -76,4 +76,6 @@ module SampleApp
     #Fixing CSS Less on Heroku
     config.assets.initialize_on_precompile = false
   end
+
+  require "em/pure_ruby"
 end
