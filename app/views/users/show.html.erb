@@ -1,8 +1,8 @@
 <% provide(:title, @user.name) %>
 
-<div class="container-full" style="background: url('../assets/thames.jpg');background-size:100%;background-repeat:no-repeat;background-position:center;;height:240px;">
+<div class="container-full" style="background: url('../assets/thames.jpg');background-size:100%;background-repeat:no-repeat;background-position:center;;height:240px;"></div>   
+
   <div class="container">
-  <div class="row">
     <div class="col-md-12" style="padding-top:20px;">
       <div class="teacher-profile-bg">
         <table cellpadding="10">
@@ -34,8 +34,10 @@
 
                 <% unless(@user == current_user) %>
               <div class="row">
-                <div class="col-md-8">
-                  <%= link_to "Send Message", new_message_path(:id => @user.id), :class => "btn btn-large btn-primary" %> <br>
+                <div class="col-md-2">
+                  <%= link_to "Send Message", new_message_path(:id => @user.id), :class => "btn btn-large btn-primary" %> 
+                </div>
+                <div class="col-md-2">
                   <%= link_to "Video Call", "../party/1", :class => "btn btn-large btn-primary" %>   
                 </div>
               </div>
@@ -43,15 +45,10 @@
             </td>
           </tr>
         </table>    
-      </div>   
-    </div>   
-  </div>   
-</div>   
-
-  <div class="container">
+      </div> 
 
 <div class="row">
-  <div class="col-md-8" style="padding-top:30px;">
+  <div class="col-md-8" style="padding-top:20px;">
   <br><br>
   <h3>Activity Feed</h3>
 
